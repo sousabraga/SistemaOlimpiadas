@@ -11,7 +11,9 @@ import java.sql.SQLException;
 
 /**
  *
- * @author matheus
+ * @author Matheus Braga
+ * @author João Lucas
+ * @author Felipe Bruno
  */
 public final class ConnectionFactory {
     

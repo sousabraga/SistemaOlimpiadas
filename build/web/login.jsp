@@ -1,7 +1,7 @@
 <%-- 
     Document   : ranking
     Created on : Sep 17, 2016, 7:08:52 PM
-    Author     : matheus
+    Authors    : Matheus Braga, João Lucas e Felipe Bruno
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

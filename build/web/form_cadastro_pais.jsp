@@ -1,7 +1,7 @@
 <%-- 
     Document   : cadastro_de_paises
     Created on : Sep 18, 2016, 6:45:46 PM
-    Author     : matheus
+    Authors    : Matheus Braga, João Lucas e Felipe Bruno
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : Sep 17, 2016, 3:56:55 PM
-    Author     : matheus
+    Authors    : Matheus Braga, João Lucas e Felipe Bruno
 --%>
 
 <%@page import="java.util.List"%>

@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author matheus
+ * @author Matheus Braga
+ * @author João Lucas
+ * @author Felipe Bruno
  */
 public class CadastroPais implements RegraDeNegocio {
 

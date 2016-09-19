@@ -9,7 +9,9 @@ import java.util.List;
 
 /**
  *
- * @author matheus
+ * @author Matheus Braga
+ * @author João Lucas
+ * @author Felipe Bruno
  * @param <T>
  */
 public interface DAO<T> {

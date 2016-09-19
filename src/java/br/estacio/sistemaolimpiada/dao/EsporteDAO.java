@@ -10,7 +10,9 @@ import java.util.List;
 
 /**
  *
- * @author matheus
+ * @author Matheus Braga
+ * @author João Lucas
+ * @author Felipe Bruno
  */
 public class EsporteDAO implements DAO<Esporte> {
 

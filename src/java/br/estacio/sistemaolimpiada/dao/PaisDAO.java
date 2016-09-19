@@ -16,7 +16,9 @@ import java.util.List;
 
 /**
  *
- * @author matheus
+ * @author Matheus Braga
+ * @author João Lucas
+ * @author Felipe Bruno
  */
 public class PaisDAO implements DAO<Pais> {
     

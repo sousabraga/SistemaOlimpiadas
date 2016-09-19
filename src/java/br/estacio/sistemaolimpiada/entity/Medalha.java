@@ -7,7 +7,9 @@ package br.estacio.sistemaolimpiada.entity;
 
 /**
  *
- * @author matheus
+ * @author Matheus Braga
+ * @author João Lucas
+ * @author Felipe Bruno
  */
 public enum Medalha {
     

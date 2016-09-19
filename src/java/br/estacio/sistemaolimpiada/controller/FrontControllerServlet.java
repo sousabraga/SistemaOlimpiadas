@@ -17,7 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author matheus
+ * @author Matheus Braga
+ * @author João Lucas
+ * @author Felipe Bruno
  */
 @WebServlet(name = "FrontControllerServlet", urlPatterns = {"/sistema"})
 public class FrontControllerServlet extends HttpServlet {
