@@ -1,0 +1,25 @@
+CREATE DATABASE olimpiadas;
+
+USE olimpiadas;
+
+CREATE TABLE paises (
+codigo BIGINT NOT NULL AUTO_INCREMENT,
+nome VARCHAR(45) NOT NULL,
+CONSTRAINT pk_paises PRIMARY KEY(codigo)
+);
+
+CREATE TABLE esportes (
+codigo BIGINT NOT NULL AUTO_INCREMENT,
+nome VARCHAR(45) NOT NULL,
+CONSTRAINT pk_esportes PRIMARY KEY(codigo)
+);
+
+CREATE TABLE paises_esportes (
+codigo BIGINT NOT NULL AUTO_INCREMENT,
+fk_codigo_pais BIGINT NOT NULL,
+fk_codigo_esporte BIGINT NOT NULL,
+medalha SMALLINT NOT NULL,
+CONSTRAINT pk_paises_esportes PRIMARY KEY(codigo),
+CONSTRAINT fk_paises_codigo FOREIGN KEY(fk_codigo_pais) REFERENCES paises(codigo),
+CONSTRAINT fk_esportes_codigo FOREIGN KEY(fk_codigo_esporte) REFERENCES esportes(codigo)
+);

@@ -15,9 +15,9 @@ import java.sql.SQLException;
  */
 public final class ConnectionFactory {
     
-    private static final String SERVIDOR = "jdbc:derby://localhost:1527/olimpiadas";
+    private static final String SERVIDOR = "jdbc:mysql://localhost:3306/olimpiadas";
     private static final String USUARIO = "root";
-    private static final String SENHA = "root";
+    private static final String SENHA = "123456";
     
     private static Connection connection;
     
@@ -25,8 +25,9 @@ public final class ConnectionFactory {
     
     public static Connection getConnection() {
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(SERVIDOR, USUARIO, SENHA);
-        } catch (SQLException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             throw new RuntimeException(ex);
         }
         

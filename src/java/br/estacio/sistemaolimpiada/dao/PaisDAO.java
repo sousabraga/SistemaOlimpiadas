@@ -22,7 +22,7 @@ public class PaisDAO implements DAO<Pais> {
     
     @Override
     public void update(Pais pais) {
-        String sql = "UPDATE pais SET nome = ? WHERE codigo = ?";
+        String sql = "UPDATE paises SET nome = ? WHERE codigo = ?";
         
         try (
                 Connection connection = ConnectionFactory.getConnection();
@@ -41,7 +41,7 @@ public class PaisDAO implements DAO<Pais> {
 
     @Override
     public void insert(Pais pais) {
-        String sql = "INSERT INTO pais (nome) VALUES (?)";
+        String sql = "INSERT INTO paises (nome) VALUES (?)";
         
         try (
                 Connection connection = ConnectionFactory.getConnection();
@@ -60,7 +60,7 @@ public class PaisDAO implements DAO<Pais> {
     @Override
     public void delete(long codigo) {
         
-        String sql = "DELETE FROM pais WHERE codigo = ?";
+        String sql = "DELETE FROM paises WHERE codigo = ?";
         
         try (
                Connection connection = ConnectionFactory.getConnection();
@@ -79,7 +79,7 @@ public class PaisDAO implements DAO<Pais> {
     @Override
     public List<Pais> selectAll() {
         List<Pais> listaPaises = new ArrayList<>();
-        String sql = "SELECT * FROM pais";      
+        String sql = "SELECT * FROM paises";      
        
         try (
                 Connection connection = ConnectionFactory.getConnection();
@@ -102,7 +102,7 @@ public class PaisDAO implements DAO<Pais> {
 
     @Override
     public Pais selectById(long codigo) {
-        String sql = "SELECT * FROM pais WHERE codigo = " + codigo;
+        String sql = "SELECT * FROM paises WHERE codigo = " + codigo;
         
         try (
                 Connection connection = ConnectionFactory.getConnection();
@@ -125,7 +125,7 @@ public class PaisDAO implements DAO<Pais> {
     }
     
     public int getTotalMedalhas(Pais pais) {
-        String sql = "SELECT COUNT(*) AS count FROM pais_esporte WHERE fk_codigo_pais = " + pais.getCodigo();
+        String sql = "SELECT COUNT(*) AS count FROM paises_esportes WHERE fk_codigo_pais = " + pais.getCodigo();
         
         int total = 0;
         
@@ -158,7 +158,7 @@ public class PaisDAO implements DAO<Pais> {
     }
     
     private int getTotalMedalhasX(Pais pais, Medalha medalha) {
-        String sql = "SELECT COUNT(*) AS count FROM pais_esporte WHERE fk_codigo_pais = " + pais.getCodigo() + " AND medalha = " + medalha;
+        String sql = "SELECT COUNT(*) AS count FROM paises_esportes WHERE fk_codigo_pais = " + pais.getCodigo() + " AND medalha = " + medalha;
         
         int total = 0;
         

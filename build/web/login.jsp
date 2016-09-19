@@ -16,6 +16,32 @@
     <body>
         <jsp:include page="cabecalho.jsp" flush="true"/>
         
-        <h1>Página em construção! ;)</h1>
+        <section class="conteudo">
+            
+            <div class="container">
+                <div class="page-header">
+                    <h1>Login Administrador</h1>
+                </div>
+
+                <form action="sistema" id="formulario" method="POST">
+                    <div class="form-group">
+                        <label for="usuario">Usuário:</label>
+                        <input name="usuario" id="usuario" type="text" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                      <label for="senha">Senha:</label>
+                      <input name="senha" id="senha" type="password" class="form-control"/>
+                    </div>
+                </form>
+
+                <button type="submit" form="formulario" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-log-in"></span>
+                    &nbsp Logar
+                </button>
+            </div>
+            
+        </section>
+        
+        <jsp:include page="rodape.jsp" flush="true"/>
     </body>
 </html>

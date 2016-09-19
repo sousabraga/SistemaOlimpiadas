@@ -9,6 +9,7 @@ and open the template in the editor.
 */
 
 .conteudo {
+    padding: 10px;
     min-height: 500px;
 }
 
@@ -24,4 +25,8 @@ and open the template in the editor.
 img#logo {
     max-width: 100px;
     max-height: 100px;
+}
+
+form {
+    max-width: 400px;
 }
