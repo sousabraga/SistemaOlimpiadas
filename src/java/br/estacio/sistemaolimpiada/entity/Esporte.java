@@ -11,6 +11,7 @@ package br.estacio.sistemaolimpiada.entity;
  * @author João Lucas
  * @author Felipe Bruno
  */
+
 public class Esporte {
     
     private long codigo;

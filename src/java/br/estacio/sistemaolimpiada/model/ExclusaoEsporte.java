@@ -5,9 +5,7 @@
  */
 package br.estacio.sistemaolimpiada.model;
 
-import br.estacio.sistemaolimpiada.dao.PaisDAO;
-import br.estacio.sistemaolimpiada.entity.Pais;
-import java.util.List;
+import br.estacio.sistemaolimpiada.dao.EsporteDAO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,17 +15,20 @@ import javax.servlet.http.HttpServletResponse;
  * @author João Lucas
  * @author Felipe Bruno
  */
-public class ConsultaPaises implements RegraDeNegocio {
-
+public class ExclusaoEsporte implements RegraDeNegocio {
+    
     @Override
     public String executarRegraDeNegocio(HttpServletRequest request, HttpServletResponse response) {
-        PaisDAO paisDAO = new PaisDAO();
+        EsporteDAO esporteDAO = new EsporteDAO();
         
-        List<Pais> paises = paisDAO.selectAll();
+        long codigoEsporte = Long.parseLong(request.getParameter("codigoEsporte"));
+        esporteDAO.delete(codigoEsporte);
         
-        request.setAttribute("paises", paises);
+        String caminho = "lista_esportes.jsp";
+        request.setAttribute("caminho", caminho);
         
-        String paginaRetorno = "/lista_paises.jsp";
+        String paginaRetorno = "pagina_sucesso.jsp";
+        
         return paginaRetorno;
     }
     

@@ -17,8 +17,6 @@ public class Pais implements Comparable<Pais> {
     
     private String nome;
     
-    private int qtdMedalhas;
-    
     private int qtdMedalhasOuro;
     
     private int qtdMedalhasPrata;
@@ -41,14 +39,6 @@ public class Pais implements Comparable<Pais> {
         this.nome = nome;
     }
     
-    public int getQtdMedalhas() {
-        return qtdMedalhas;
-    }
-    
-    public void setQtdMedalhas(int qtdMedalhas) {
-        this.qtdMedalhas = qtdMedalhas;
-    }
-
     public int getQtdMedalhasOuro() {
         return qtdMedalhasOuro;
     }
@@ -73,11 +63,15 @@ public class Pais implements Comparable<Pais> {
         this.qtdMedalhasBronze = qtdMedalhasBronze;
     }
     
+    public int getTotalMedalhas() {
+        return qtdMedalhasOuro + qtdMedalhasPrata + qtdMedalhasBronze;
+    }
+
     @Override
     public int compareTo(Pais outroPais) {
-        if (this.getQtdMedalhas() < outroPais.getQtdMedalhas())
+        if (this.getTotalMedalhas() < outroPais.getTotalMedalhas())
             return 1;
-        else if (this.qtdMedalhas > outroPais.getQtdMedalhas())
+        else if (this.getTotalMedalhas() > outroPais.getTotalMedalhas())
             return -1;
         else 
             return 0;

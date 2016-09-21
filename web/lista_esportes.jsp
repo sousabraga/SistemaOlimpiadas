@@ -1,13 +1,12 @@
 <%-- 
-    Document   : index
-    Created on : Sep 17, 2016, 3:56:55 PM
+    Document   : lista_esportes.jsp
+    Created on : Sep 20, 2016, 7:29:53 PM
     Authors    : Matheus Braga, João Lucas e Felipe Bruno
 --%>
 
-<%@page import="br.estacio.sistemaolimpiada.dao.PaisDAO"%>
+<%@page import="br.estacio.sistemaolimpiada.entity.Esporte"%>
+<%@page import="br.estacio.sistemaolimpiada.dao.EsporteDAO"%>
 <%@page import="java.util.List"%>
-<%@page import="br.estacio.sistemaolimpiada.entity.Pais"%>
-<%@page import="br.estacio.sistemaolimpiada.entity.Pais"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="resources/estilos.css">
-        <title>Lista de Países</title>
+        <title>Lista de Esportes</title>
     </head>
     <body>
         <jsp:include page="cabecalho.jsp" flush="true"/>
@@ -32,18 +31,18 @@
                 </div>
                 
                 <% 
-                    PaisDAO paisDAO = new PaisDAO();
+                    EsporteDAO esporteDAO = new EsporteDAO();
                     
-                    List<Pais> paises = paisDAO.selectAll();
+                    List<Esporte> esportes = esporteDAO.selectAll();
                     
-                    if (paises == null || paises.isEmpty()) {
+                    if (esportes == null || esportes.isEmpty()) {
                 %> 
                 
                 </br>
                 
                 <div class="alert alert-danger" role="alert">
                     <span class="glyphicon glyphicon-alert"/></span>
-                    Nenhum país foi encontrado.
+                    Nenhum esporte foi encontrado.
                 </div>
                 
                 <%        
@@ -53,20 +52,20 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th><h3>Países Cadastrados<h3></th>
+                            <th><h3>Esportes Cadastrados<h3></th>
                             <th><h3>Ações<h3></th>
                         </tr>    
                     </thead>
                     <tbody>
-                        <% for (Pais pais : paises) { %>
+                        <% for (Esporte esporte : esportes) { %>
 
                             <tr>
-                                <td><%= pais.getNome() %></td>
+                                <td><%= esporte.getNome() %></td>
                                 <!--
                                 <td>
                                     <form action="sistema" id="exclusao" method="POST">
-                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoPais"/>
-                                        <input name="codigoPais" type="hidden" value="<%= String.valueOf(pais.getCodigo()) %>"/>
+                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoEsporte"/>
+                                        <input name="codigoEsporte" type="hidden" value="<%= esporte.getCodigo() %>"/>
                                     </form>
                                     
                                     <button type="submit" form="formEdicao" class="btn btn-warning">
@@ -80,14 +79,14 @@
                                 -->
                                 <td>
                                     <form action="#" method="POST">
-                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoPais"/>
-                                        <input name="codigoPais" type="hidden" value="<%= pais.getCodigo() %>"/>
+                                        <input name="regraDeNegocio" type="hidden" value="EdicaoEsporte"/>
+                                        <input name="codigoEsporte" type="hidden" value="<%= esporte.getCodigo() %>"/>
                                         <input type="submit" value="Editar"/>
                                     </form>
 
                                     <form action="sistema" method="POST">
-                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoPais"/>
-                                        <input name="codigoPais" type="hidden" value="<%= pais.getCodigo() %>"/>
+                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoEsporte"/>
+                                        <input name="codigoEsporte" type="hidden" value="<%= esporte.getCodigo() %>"/>
                                         <input type="submit" value="Excluir"/>
                                     </form>
                                 </td>
@@ -99,10 +98,10 @@
                 
                <%   } %>
                
-               <a href="form_cadastro_pais.jsp">
+               <a href="form_cadastro_esporte.jsp">
                     <button type="button" class="btn btn-primary">
                         <span class="glyphicon glyphicon-plus-sign"></span>
-                        Cadastrar País
+                        Cadastrar Esporte
                     </button>
                </a>
                
@@ -112,3 +111,4 @@
         <jsp:include page="rodape.jsp" flush="true"/>
     </body>
 </html>
+

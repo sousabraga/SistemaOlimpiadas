@@ -4,6 +4,10 @@
     Authors    : Matheus Braga, João Lucas e Felipe Bruno
 --%>
 
+<%@page import="java.util.Collections"%>
+<%@page import="java.util.List"%>
+<%@page import="br.estacio.sistemaolimpiada.entity.Pais"%>
+<%@page import="br.estacio.sistemaolimpiada.dao.PaisDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,6 +34,27 @@
                 <div class="page-header">
                     <h1>Ranking Geral</h1>
                 </div>
+                
+                <% 
+                    PaisDAO paisDAO = new PaisDAO();    
+                    List<Pais> paises = paisDAO.selectAllComMedalhas();
+                    
+                   if (paises == null || paises.isEmpty()) {
+                %> 
+                
+                </br>
+                
+                <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-alert"/></span>
+                    Nenhum país foi encontrado.
+                </div>
+                
+                <%        
+                    } else {
+                        
+                        Collections.sort(paises);
+                %>
+                
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -41,29 +66,20 @@
                         </tr>    
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                        </tr>
-                        <tr>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                        </tr>
-                        <tr>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                        </tr>
+                        <% for (Pais pais : paises) { %>
+                            
+                            <tr>
+                                <td><%= pais.getNome() %></td>
+                                <td><%= pais.getQtdMedalhasOuro() %></td>
+                                <td><%= pais.getQtdMedalhasPrata() %></td>
+                                <td><%= pais.getQtdMedalhasBronze() %></td>
+                                <td><%= pais.getTotalMedalhas() %></td>
+                            </tr>
+                        <% } %>
                     </tbody>
                 </table>
+                        
+                <% } %>        
             </div>
         </section> 
         

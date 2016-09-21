@@ -4,6 +4,7 @@
     Authors    : Matheus Braga, João Lucas e Felipe Bruno
 --%>
 
+<%@page import="br.estacio.sistemaolimpiada.dao.PaisDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="br.estacio.sistemaolimpiada.entity.Pais"%>
 <%@page import="br.estacio.sistemaolimpiada.entity.Pais"%>
@@ -31,7 +32,9 @@
                 </div>
                 
                 <% 
-                    List<Pais> paises = (List) request.getAttribute("paises"); 
+                    PaisDAO paisDAO = new PaisDAO();
+                    
+                    List<Pais> paises = paisDAO.selectAll();
                     
                     if (paises == null || paises.isEmpty()) {
                 %> 
@@ -56,17 +59,38 @@
                     </thead>
                     <tbody>
                         <% for (Pais pais : paises) { %>
-                            
+
                             <tr>
                                 <td><%= pais.getNome() %></td>
+                                <!--
                                 <td>
-                                    <button type="submit" form="formulario" class="btn btn-warning">
+                                    <form action="sistema" id="exclusao" method="POST">
+                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoPais"/>
+                                        <input name="codigoPais" type="hidden" value="<%= String.valueOf(pais.getCodigo()) %>"/>
+                                    </form>
+                                    
+                                    <button type="submit" form="formEdicao" class="btn btn-warning">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
-                                    <button type="submit" form="formulario" class="btn btn-danger">
+                                    
+                                    <button type="submit" form="exclusao" class="btn btn-danger">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </button>
-                                </td>   
+                                </td>
+                                -->
+                                <td>
+                                    <form action="#" method="POST">
+                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoPais"/>
+                                        <input name="codigoPais" type="hidden" value="<%= pais.getCodigo() %>"/>
+                                        <input type="submit" value="Editar"/>
+                                    </form>
+
+                                    <form action="sistema" method="POST">
+                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoPais"/>
+                                        <input name="codigoPais" type="hidden" value="<%= pais.getCodigo() %>"/>
+                                        <input type="submit" value="Excluir"/>
+                                    </form>
+                                </td>
                             </tr>
                         
                         <% } %>
