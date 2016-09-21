@@ -27,7 +27,7 @@
                     
                     <div class="form-group">
                         <label for="pais">Nome do País:</label>
-                        <input name="nomePais" id="pais" type="text" class="form-control"/> 
+                        <input name="nomePais" id="pais" type="text" class="form-control" autofocus="true"/> 
                     </div>
                 </form>
                 <button type="submit" form="formulario" class="btn btn-primary">

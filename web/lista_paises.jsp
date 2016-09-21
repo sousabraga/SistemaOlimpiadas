@@ -62,22 +62,28 @@
 
                             <tr>
                                 <td><%= pais.getNome() %></td>
-                                <!--
-                                <td>
-                                    <form action="sistema" id="exclusao" method="POST">
+                                
+                                <td>                                   
+                                    <form action="sistema" id="formExclusao" method="POST">
                                         <input name="regraDeNegocio" type="hidden" value="ExclusaoPais"/>
-                                        <input name="codigoPais" type="hidden" value="<%= String.valueOf(pais.getCodigo()) %>"/>
                                     </form>
                                     
-                                    <button type="submit" form="formEdicao" class="btn btn-warning">
+                                    <form action="#" id="formEdicao" method="POST">
+                                        <input name="regraDeNegocio" type="hidden" value="EdicaoPais"/>
+                                    </form>
+                                        
+                                    <button name="codigoPais" type="submit" form="formEdicao"
+                                            value="<%= String.valueOf(pais.getCodigo()) %>" class="btn btn-warning">
                                         <span class="glyphicon glyphicon-pencil"></span>
-                                    </button>
+                                    </button>                                  
                                     
-                                    <button type="submit" form="exclusao" class="btn btn-danger">
+                                    <button name="codigoPais" type="submit" form="formExclusao" 
+                                            value="<%= String.valueOf(pais.getCodigo()) %>" class="btn btn-danger">
                                         <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
+                                    </button>                                     
                                 </td>
-                                -->
+                                
+                                <!--
                                 <td>
                                     <form action="#" method="POST">
                                         <input name="regraDeNegocio" type="hidden" value="ExclusaoPais"/>
@@ -90,7 +96,7 @@
                                         <input name="codigoPais" type="hidden" value="<%= pais.getCodigo() %>"/>
                                         <input type="submit" value="Excluir"/>
                                     </form>
-                                </td>
+                                </td> -->
                             </tr>
                         
                         <% } %>

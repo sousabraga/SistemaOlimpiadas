@@ -27,7 +27,7 @@
                     
                     <div class="form-group">
                         <label for="esporte">Nome do Esporte:</label>
-                        <input name="nomeEsporte" id="esporte" type="text" class="form-control"/> 
+                        <input name="nomeEsporte" id="esporte" type="text" class="form-control" autofocus="true"/> 
                     </div>
                 </form>
                 <button type="submit" form="formulario" class="btn btn-primary">

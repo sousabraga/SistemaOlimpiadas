@@ -26,7 +26,7 @@
                 <form action="sistema" id="formulario" method="POST">
                     <div class="form-group">
                         <label for="usuario">Usuário:</label>
-                        <input name="usuario" id="usuario" type="text" class="form-control"/>
+                        <input name="usuario" id="usuario" type="text" class="form-control" autofocus="true"/>
                     </div>
                     <div class="form-group">
                       <label for="senha">Senha:</label>

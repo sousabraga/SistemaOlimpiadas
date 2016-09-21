@@ -61,34 +61,24 @@
 
                             <tr>
                                 <td><%= esporte.getNome() %></td>
-                                <!--
                                 <td>
-                                    <form action="sistema" id="exclusao" method="POST">
+                                    <form action="sistema" id="formExclusao" method="POST">
                                         <input name="regraDeNegocio" type="hidden" value="ExclusaoEsporte"/>
-                                        <input name="codigoEsporte" type="hidden" value="<%= esporte.getCodigo() %>"/>
-                                    </form>
-                                    
-                                    <button type="submit" form="formEdicao" class="btn btn-warning">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </button>
-                                    
-                                    <button type="submit" form="exclusao" class="btn btn-danger">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </td>
-                                -->
-                                <td>
-                                    <form action="#" method="POST">
-                                        <input name="regraDeNegocio" type="hidden" value="EdicaoEsporte"/>
-                                        <input name="codigoEsporte" type="hidden" value="<%= esporte.getCodigo() %>"/>
-                                        <input type="submit" value="Editar"/>
                                     </form>
 
-                                    <form action="sistema" method="POST">
-                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoEsporte"/>
-                                        <input name="codigoEsporte" type="hidden" value="<%= esporte.getCodigo() %>"/>
-                                        <input type="submit" value="Excluir"/>
+                                    <form action="#" id="formEdicao" method="POST">
+                                        <input name="regraDeNegocio" type="hidden" value="EdicaoEsporte"/>
                                     </form>
+
+                                    <button name="codigoEsporte" type="submit" form="formEdicao"
+                                            value="<%= String.valueOf(esporte.getCodigo()) %>" class="btn btn-warning">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </button>                                  
+
+                                    <button name="codigoEsporte" type="submit" form="formExclusao" 
+                                            value="<%= String.valueOf(esporte.getCodigo()) %>" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>     
                                 </td>
                             </tr>
                         
