@@ -30,3 +30,7 @@ img#logo {
 form {
     max-width: 400px;
 }
+
+.list-buttons {
+    display: inline;
+}

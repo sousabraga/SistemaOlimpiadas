@@ -31,6 +31,22 @@
                     </div>
                 </div>
 
+                <br/>
+                
+                <% 
+                    String msgSucesso = (String) request.getSession().getAttribute("msgSucesso");
+                    
+                    if (msgSucesso != null) { 
+                        request.getSession().removeAttribute("msgSucesso");
+                %>    
+                        <div class="alert alert-success fade in" role="alert">
+                            <span class="glyphicon glyphicon-ok-sign"/></span>
+                            <%= msgSucesso %>
+                        </div>  
+                <%       
+                    }
+                %>
+                
                 <div class="page-header">
                     <h1>Ranking Geral</h1>
                 </div>

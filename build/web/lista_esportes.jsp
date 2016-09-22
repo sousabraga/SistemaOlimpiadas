@@ -30,6 +30,22 @@
                     </div>
                 </div>
                 
+                <br/>
+                
+                <% 
+                    String msgSucesso = (String) request.getSession().getAttribute("msgSucesso");
+                    
+                    if (msgSucesso != null) { 
+                        request.getSession().removeAttribute("msgSucesso");
+                %>    
+                        <div class="alert alert-success fade in" role="alert">
+                            <span class="glyphicon glyphicon-ok-sign"/></span>
+                            <%= msgSucesso %>
+                        </div>  
+                <%       
+                    }
+                %>
+                
                 <% 
                     EsporteDAO esporteDAO = new EsporteDAO();
                     
@@ -38,9 +54,7 @@
                     if (esportes == null || esportes.isEmpty()) {
                 %> 
                 
-                </br>
-                
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-danger fade in" role="alert">
                     <span class="glyphicon glyphicon-alert"/></span>
                     Nenhum esporte foi encontrado.
                 </div>
@@ -62,23 +76,19 @@
                             <tr>
                                 <td><%= esporte.getNome() %></td>
                                 <td>
-                                    <form action="sistema" id="formExclusao" method="POST">
-                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoEsporte"/>
-                                    </form>
-
-                                    <form action="#" id="formEdicao" method="POST">
+                                    <form action="#" class="list-buttons" method="POST">
                                         <input name="regraDeNegocio" type="hidden" value="EdicaoEsporte"/>
+                                        <button name="codigoEsporte" type="submit" value="<%= esporte.getCodigo() %>" class="btn btn-warning">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </button> 
                                     </form>
-
-                                    <button name="codigoEsporte" type="submit" form="formEdicao"
-                                            value="<%= String.valueOf(esporte.getCodigo()) %>" class="btn btn-warning">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </button>                                  
-
-                                    <button name="codigoEsporte" type="submit" form="formExclusao" 
-                                            value="<%= String.valueOf(esporte.getCodigo()) %>" class="btn btn-danger">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>     
+                                            
+                                    <form action="sistema" class="list-buttons" method="POST">
+                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoEsporte"/>
+                                        <button name="codigoEsporte" type="submit" value="<%= esporte.getCodigo() %>" class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>  
+                                    </form> 
                                 </td>
                             </tr>
                         

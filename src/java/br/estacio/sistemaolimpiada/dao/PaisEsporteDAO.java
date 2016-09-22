@@ -6,12 +6,9 @@
 package br.estacio.sistemaolimpiada.dao;
 
 import br.estacio.sistemaolimpiada.entity.Medalha;
-import br.estacio.sistemaolimpiada.entity.Pais;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,6 +19,30 @@ import java.util.List;
  */
 public class PaisEsporteDAO implements DAO {
 
+    private static final String TABLE = "paises_esportes";
+    private static final String COL_CODIGO_PAIS = "fk_codigo_pais";
+    private static final String COL_CODIGO_ESPORTE = "fk_codigo_esporte";
+    private static final String COL_MEDALHA  = "medalha";
+    
+    public void insert(long codigoPais, long codigoEsporte, int codigoMedalha) {
+        String sql = String.format("INSERT INTO %s (%s, %s, %s) VALUES (?, ?, ?)", 
+                TABLE, COL_CODIGO_PAIS, COL_CODIGO_ESPORTE, COL_MEDALHA);
+        
+        try (
+                Connection connection = ConnectionFactory.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql);
+            ) {
+            
+            ps.setLong(1, codigoPais);
+            ps.setLong(2, codigoEsporte);
+            ps.setInt(3, codigoMedalha);
+            
+            ps.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
     @Override
     public void update(Object tipo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -29,7 +50,7 @@ public class PaisEsporteDAO implements DAO {
 
     @Override
     public void insert(Object tipo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

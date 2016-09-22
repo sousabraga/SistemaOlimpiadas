@@ -54,7 +54,8 @@
                     List<Esporte> esportes = esporteDAO.selectAll();      
                 %>
                 
-                <form action="sistema" method="POST">
+                <form action="sistema" id="cadastroMedalhista" method="POST">
+                    <input type="hidden" name="regraDeNegocio" value="CadastroMedalhista"/>
                     
                     <label for="pais">País:</label><br/>
                     <select name="codigoPais" id="pais" class="selectpicker" title="-- Selecione o país --">
@@ -84,7 +85,7 @@
                     <br/><br/>
                 </form>
                     
-                <button type="button" class="btn btn-primary">
+                <button type="submit" form="cadastroMedalhista" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus-sign"></span>
                     Cadastrar Medalhista
                 </button>  

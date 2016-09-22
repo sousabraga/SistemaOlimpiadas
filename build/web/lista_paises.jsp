@@ -31,6 +31,22 @@
                     </div>
                 </div>
                 
+                <br/>
+                
+                <% 
+                    String msgSucesso = (String) request.getSession().getAttribute("msgSucesso");
+                    
+                    if (msgSucesso != null) { 
+                        request.getSession().removeAttribute("msgSucesso");
+                %>    
+                        <div class="alert alert-success fade in" role="alert">
+                            <span class="glyphicon glyphicon-ok-sign"/></span>
+                            <%= msgSucesso %>
+                        </div>  
+                <%       
+                    }
+                %>
+                
                 <% 
                     PaisDAO paisDAO = new PaisDAO();
                     
@@ -41,7 +57,7 @@
                 
                 </br>
                 
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-danger fade in" role="alert">
                     <span class="glyphicon glyphicon-alert"/></span>
                     Nenhum país foi encontrado.
                 </div>
@@ -64,39 +80,20 @@
                                 <td><%= pais.getNome() %></td>
                                 
                                 <td>                                   
-                                    <form action="sistema" id="formExclusao" method="POST">
-                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoPais"/>
-                                    </form>
-                                    
-                                    <form action="#" id="formEdicao" method="POST">
+                                    <form action="#" class="list-buttons" method="POST">
                                         <input name="regraDeNegocio" type="hidden" value="EdicaoPais"/>
+                                        <button name="codigoPais" type="submit" value="<%= pais.getCodigo() %>" class="btn btn-warning">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </button>  
                                     </form>
                                         
-                                    <button name="codigoPais" type="submit" form="formEdicao"
-                                            value="<%= String.valueOf(pais.getCodigo()) %>" class="btn btn-warning">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </button>                                  
-                                    
-                                    <button name="codigoPais" type="submit" form="formExclusao" 
-                                            value="<%= String.valueOf(pais.getCodigo()) %>" class="btn btn-danger">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>                                     
+                                    <form action="sistema" class="list-buttons" method="POST">
+                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoPais"/>
+                                        <button name="codigoPais" type="submit" value="<%= pais.getCodigo() %>" class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button> 
+                                    </form>
                                 </td>
-                                
-                                <!--
-                                <td>
-                                    <form action="#" method="POST">
-                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoPais"/>
-                                        <input name="codigoPais" type="hidden" value="<%= pais.getCodigo() %>"/>
-                                        <input type="submit" value="Editar"/>
-                                    </form>
-
-                                    <form action="sistema" method="POST">
-                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoPais"/>
-                                        <input name="codigoPais" type="hidden" value="<%= pais.getCodigo() %>"/>
-                                        <input type="submit" value="Excluir"/>
-                                    </form>
-                                </td> -->
                             </tr>
                         
                         <% } %>
