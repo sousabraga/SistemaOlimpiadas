@@ -174,7 +174,7 @@ public class PaisDAO implements DAO<Pais> {
     }
     
     private int getTotalMedalhasX(Pais pais, Medalha medalha) {
-        String sql = "SELECT COUNT(*) AS total FROM paises_esportes WHERE fk_codigo_pais = " + pais.getCodigo() + " AND medalha = " + medalha.getCodigo();
+        String sql = "SELECT COUNT(*) AS total FROM paises_esportes WHERE codigo_pais = " + pais.getCodigo() + " AND medalha = " + medalha.getCodigo();
         
         int total = 0;
         
