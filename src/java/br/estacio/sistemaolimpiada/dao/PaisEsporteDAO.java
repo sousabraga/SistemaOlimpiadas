@@ -5,7 +5,6 @@
  */
 package br.estacio.sistemaolimpiada.dao;
 
-import br.estacio.sistemaolimpiada.entity.Medalha;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -20,8 +19,8 @@ import java.util.List;
 public class PaisEsporteDAO implements DAO {
 
     private static final String TABLE = "paises_esportes";
-    private static final String COL_CODIGO_PAIS = "fk_codigo_pais";
-    private static final String COL_CODIGO_ESPORTE = "fk_codigo_esporte";
+    private static final String COL_CODIGO_PAIS = "codigo_pais";
+    private static final String COL_CODIGO_ESPORTE = "codigo_esporte";
     private static final String COL_MEDALHA  = "medalha";
     
     public void insert(long codigoPais, long codigoEsporte, int codigoMedalha) {
