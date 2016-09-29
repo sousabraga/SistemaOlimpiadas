@@ -12,7 +12,7 @@ CREATE TABLE paises (
 CREATE TABLE esportes (
     codigo BIGINT NOT NULL AUTO_INCREMENT,
     nome VARCHAR(45) NOT NULL,
-    CONSTRAINT pk_esportes PRIMARY KEY (codigo)
+    CONSTRAINT pk_esportes PRIMARY KEY (codigo),
     CONSTRAINT un_esportes_nome UNIQUE (nome)
 );
 
