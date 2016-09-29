@@ -32,7 +32,7 @@ public class CadastroPais implements RegraDeNegocio {
         
         request.setAttribute("caminho", caminho);
         
-        String paginaRetorno = "/pagina_sucesso.jsp";
+        String paginaRetorno = "cadastro_sucesso.jsp";
         
         return paginaRetorno;
     }

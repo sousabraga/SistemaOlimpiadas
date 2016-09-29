@@ -27,7 +27,7 @@ public class ExclusaoPais implements RegraDeNegocio {
         String caminho = "lista_paises.jsp";
         request.setAttribute("caminho", caminho);
         
-        String paginaRetorno = "pagina_sucesso.jsp";
+        String paginaRetorno = "exclusao_sucesso.jsp";
         
         return paginaRetorno;
     }

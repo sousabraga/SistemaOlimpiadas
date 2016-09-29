@@ -7,10 +7,9 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index.jsp">Home</a></li>
                 <li><a href="ranking.jsp">Ranking Geral</a></li>
-              <li><a href="#">Page 2</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="login.jsp"><span class="glyphicon glyphicon-cog"></span>&nbsp Administrador</a></li>
+                <li><a href="dashboard.jsp"><span class="glyphicon glyphicon-cog"></span>&nbsp Administrador</a></li>
             </ul>
         </div>
     </nav>

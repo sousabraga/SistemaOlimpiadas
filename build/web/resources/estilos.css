@@ -11,6 +11,7 @@ and open the template in the editor.
 .conteudo {
     padding: 10px;
     min-height: 500px;
+    padding-bottom: 20px;
 }
 
 .footer {
@@ -33,4 +34,8 @@ form {
 
 .list-buttons {
     display: inline;
+}
+
+#painel {
+    max-width: 500px;
 }

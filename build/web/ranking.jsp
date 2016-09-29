@@ -69,6 +69,7 @@
                     } else {
                         
                         Collections.sort(paises);
+                        int posicao = 0;
                 %>
                 
                 <table class="table table-hover">
@@ -85,7 +86,7 @@
                         <% for (Pais pais : paises) { %>
                             
                             <tr>
-                                <td><%= pais.getNome() %></td>
+                                <td><%= ++posicao + "° &nbsp" + pais.getNome() %></td>
                                 <td><%= pais.getQtdMedalhasOuro() %></td>
                                 <td><%= pais.getQtdMedalhasPrata() %></td>
                                 <td><%= pais.getQtdMedalhasBronze() %></td>
@@ -95,7 +96,15 @@
                     </tbody>
                 </table>
                         
-                <% } %>        
+                <% } %>    
+                
+                <a href="form_cadastro_medalhista.jsp">
+                    <button type="button" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus-sign"></span>
+                        Cadastrar Medalhista
+                    </button>
+               </a>
+                
             </div>
         </section> 
         

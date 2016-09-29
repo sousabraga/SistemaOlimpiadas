@@ -24,6 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "FrontControllerServlet", urlPatterns = {"/sistema"})
 public class FrontControllerServlet extends HttpServlet {
 
+    private static final String ENCODING = "UTF-8";
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -36,6 +38,9 @@ public class FrontControllerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     
+        request.setCharacterEncoding(ENCODING);
+        response.setCharacterEncoding(ENCODING);
+        
         RegraDeNegocio regraDeNegocio = instanciarRegraDeNegocio(request);
         
         String caminhoPagina = regraDeNegocio.executarRegraDeNegocio(request, response);

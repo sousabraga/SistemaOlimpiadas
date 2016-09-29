@@ -31,7 +31,7 @@ public class CadastroEsporte implements RegraDeNegocio {
         
         request.setAttribute("caminho", caminho);
         
-        String caminhoRetorno = "pagina_sucesso.jsp";      
+        String caminhoRetorno = "cadastro_sucesso.jsp";      
         
         return caminhoRetorno;
     }

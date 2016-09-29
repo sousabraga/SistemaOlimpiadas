@@ -22,18 +22,19 @@
                     <h1>Cadastro de Esportes</h1>
                 </div>    
                 
-                <form action="sistema" id="formulario" method="POST">
+                <form action="sistema" method="POST">
                     <input name="regraDeNegocio" type="hidden" value="CadastroEsporte"/>
                     
                     <div class="form-group">
                         <label for="esporte">Nome do Esporte:</label>
                         <input name="nomeEsporte" id="esporte" type="text" class="form-control" autofocus="true"/> 
                     </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus-sign"></span>
+                        Cadastrar Esporte
+                    </button>
                 </form>
-                <button type="submit" form="formulario" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus-sign"></span>
-                    Cadastrar Esporte
-                </button>
             </div>
         </section>
         
