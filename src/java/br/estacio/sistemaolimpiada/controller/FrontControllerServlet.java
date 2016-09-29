@@ -31,15 +31,14 @@ public class FrontControllerServlet extends HttpServlet {
     public static final String CAMINHO_KEY = "caminho";
     public static final String REGRA_DE_NEGOCIO_KEY = "regraDeNegocio";
     private static final String ENCODING = "UTF-8";
-    private static final Map<String, String> CAMINHO;
-    private static final String CAMINHO_SUCESSO = "pagina_sucesso.jsp";
+    private static final Map<String, String[]> CAMINHO;
     static {
         CAMINHO = new HashMap<>();
-        CAMINHO.put("CadastroEsporte", "lista_esportes.jsp");
-        CAMINHO.put("CadastroPais", "lista_paises.jsp");
-        CAMINHO.put("CadastroMedalhista", "ranking.jsp");
-        CAMINHO.put("ExclusaoEsporte", "lista_esportes.jsp");
-        CAMINHO.put("ExclusaoPais", "lista_paises.jsp");
+        CAMINHO.put("CadastroEsporte", new String[] {"lista_esportes.jsp", "cadastro_sucesso.jsp"});
+        CAMINHO.put("CadastroPais", new String[] {"lista_paises.jsp", "cadastro_sucesso.jsp"});
+        CAMINHO.put("CadastroMedalhista", new String[] {"ranking.jsp", "cadastro_sucesso.jsp"});
+        CAMINHO.put("ExclusaoEsporte", new String[] {"lista_esportes.jsp", "exclusao_sucesso.jsp"});
+        CAMINHO.put("ExclusaoPais", new String[] {"lista_paises.jsp","exclusao_sucesso.jsp"});
     };
     
     private void processRequest(HttpServletRequest request, HttpServletResponse response) 
@@ -61,9 +60,9 @@ public class FrontControllerServlet extends HttpServlet {
                 request.setAttribute(chave, parametrosResposta.get(chave));
         }
         
-        request.setAttribute(CAMINHO_KEY, CAMINHO.get(parametroRegraDeNegocio));
+        request.setAttribute(CAMINHO_KEY, CAMINHO.get(parametroRegraDeNegocio)[0]);
         
-        RequestDispatcher rq = request.getRequestDispatcher(CAMINHO_SUCESSO);
+        RequestDispatcher rq = request.getRequestDispatcher(CAMINHO.get(parametroRegraDeNegocio)[1]);
         rq.forward(request, response);
     }
     
