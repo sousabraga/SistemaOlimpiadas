@@ -5,8 +5,7 @@
  */
 package br.estacio.sistemaolimpiada.model;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  *
@@ -16,6 +15,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface RegraDeNegocio {
     
-    public String executarRegraDeNegocio(HttpServletRequest request, HttpServletResponse response);
+    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, String[]> parametrosResposta);
     
 }

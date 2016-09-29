@@ -6,8 +6,7 @@
 package br.estacio.sistemaolimpiada.model;
 
 import br.estacio.sistemaolimpiada.dao.EsporteDAO;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  *
@@ -17,19 +16,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ExclusaoEsporte implements RegraDeNegocio {
     
+    public static final String CODIGO_ESPORTE_KEY = "codigoEsporte";
+    
     @Override
-    public String executarRegraDeNegocio(HttpServletRequest request, HttpServletResponse response) {
-        EsporteDAO esporteDAO = new EsporteDAO();
+    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, String[]> parametrosResposta) { 
+        long codigoEsporte = Long.parseLong(parametrosRequisicao.get(CODIGO_ESPORTE_KEY)[0]);
         
-        long codigoEsporte = Long.parseLong(request.getParameter("codigoEsporte"));
-        esporteDAO.delete(codigoEsporte);
-        
-        String caminho = "lista_esportes.jsp";
-        request.setAttribute("caminho", caminho);
-        
-        String paginaRetorno = "exclusao_sucesso.jsp";
-        
-        return paginaRetorno;
+        EsporteDAO dao = new EsporteDAO();
+        dao.delete(codigoEsporte);
     }
     
 }

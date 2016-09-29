@@ -6,8 +6,7 @@
 package br.estacio.sistemaolimpiada.model;
 
 import br.estacio.sistemaolimpiada.dao.PaisDAO;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  *
@@ -17,20 +16,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ExclusaoPais implements RegraDeNegocio {
 
-    @Override
-    public String executarRegraDeNegocio(HttpServletRequest request, HttpServletResponse response) {
-        PaisDAO paisDAO = new PaisDAO();
-        
-        long codigoPais = Long.parseLong(request.getParameter("codigoPais"));
-        paisDAO.delete(codigoPais);
-        
-        String caminho = "lista_paises.jsp";
-        request.setAttribute("caminho", caminho);
-        
-        String paginaRetorno = "exclusao_sucesso.jsp";
-        
-        return paginaRetorno;
-    }
+    public static final String CODIGO_PAIS_KEY = "codigoPais";
     
+    @Override
+    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, String[]> parametrosResposta) {
+        long codigoPais = Long.parseLong(parametrosRequisicao.get(CODIGO_PAIS_KEY)[0]);
+        
+        PaisDAO dao = new PaisDAO();
+        dao.delete(codigoPais);
+    }
     
 }

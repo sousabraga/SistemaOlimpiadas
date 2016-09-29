@@ -6,8 +6,7 @@
 package br.estacio.sistemaolimpiada.model;
 
 import br.estacio.sistemaolimpiada.dao.PaisEsporteDAO;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  *
@@ -17,23 +16,18 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CadastroMedalhista implements RegraDeNegocio {
 
+    public static final String CODIGO_PAIS_KEY = "codigoPais"; 
+    public static final String CODIGO_ESPORTE_KEY = "codigoEsporte";
+    public static final String CODIGO_MEDALHA_KEY = "codigoMedalha";
+         
     @Override
-    public String executarRegraDeNegocio(HttpServletRequest request, HttpServletResponse response) {
+    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, String[]> parametrosResposta) {
+        long codigoPais = Long.valueOf(parametrosRequisicao.get(CODIGO_PAIS_KEY)[0]);
+        long codigoEsporte = Long.valueOf(parametrosRequisicao.get(CODIGO_ESPORTE_KEY)[0]);
+        int codigoMedalha = Integer.valueOf(parametrosRequisicao.get(CODIGO_MEDALHA_KEY)[0]);
+        
         PaisEsporteDAO dao = new PaisEsporteDAO();
-        
-        long codigoPais = Long.valueOf(request.getParameter("codigoPais"));
-        long codigoEsporte = Long.valueOf(request.getParameter("codigoEsporte"));
-        int codigoMedalha = Integer.parseInt(request.getParameter("codigoMedalha"));
-        
         dao.insert(codigoPais, codigoEsporte, codigoMedalha);
-        
-        String caminho = "ranking.jsp";
-        
-        request.setAttribute("caminho", caminho);
-        
-        String caminhoRetorno = "cadastro_sucesso.jsp";
-        
-        return caminhoRetorno;
     }
     
 }

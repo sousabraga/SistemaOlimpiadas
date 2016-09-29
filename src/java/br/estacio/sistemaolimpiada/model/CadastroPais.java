@@ -7,8 +7,7 @@ package br.estacio.sistemaolimpiada.model;
 
 import br.estacio.sistemaolimpiada.dao.PaisDAO;
 import br.estacio.sistemaolimpiada.entity.Pais;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  *
@@ -18,23 +17,17 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CadastroPais implements RegraDeNegocio {
 
+    public static final String NOME_PAIS_KEY = "nomePais";
+    
     @Override
-    public String executarRegraDeNegocio(HttpServletRequest request, HttpServletResponse response) {
-        PaisDAO paisDAO = new PaisDAO();
-        String nomePais = (String) request.getParameter("nomePais");
+    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, String[]> parametrosResposta) {
+        String nomePais = (String) parametrosRequisicao.get(NOME_PAIS_KEY)[0];
         
         Pais pais = new Pais();
         pais.setNome(nomePais);
         
-        paisDAO.insert(pais);
-        
-        String caminho = "lista_paises.jsp";
-        
-        request.setAttribute("caminho", caminho);
-        
-        String paginaRetorno = "cadastro_sucesso.jsp";
-        
-        return paginaRetorno;
+        PaisDAO dao = new PaisDAO();
+        dao.insert(pais);   
     }
     
 }

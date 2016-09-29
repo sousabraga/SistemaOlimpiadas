@@ -7,8 +7,7 @@ package br.estacio.sistemaolimpiada.model;
 
 import br.estacio.sistemaolimpiada.dao.EsporteDAO;
 import br.estacio.sistemaolimpiada.entity.Esporte;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  *
@@ -18,22 +17,17 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CadastroEsporte implements RegraDeNegocio {
 
+    public static final String NOME_ESPORTE_KEY = "nomeEsporte";
+    
     @Override
-    public String executarRegraDeNegocio(HttpServletRequest request, HttpServletResponse response) {
-        EsporteDAO esporteDAO = new EsporteDAO();
+    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, String[]> parametrosResposta) {
+        String nome = parametrosRequisicao.get(NOME_ESPORTE_KEY)[0];
         
         Esporte esporte = new Esporte();
-        esporte.setNome(request.getParameter("nomeEsporte"));
+        esporte.setNome(nome);
         
-        esporteDAO.insert(esporte);
-        
-        String caminho = "lista_esportes.jsp";
-        
-        request.setAttribute("caminho", caminho);
-        
-        String caminhoRetorno = "cadastro_sucesso.jsp";      
-        
-        return caminhoRetorno;
+        EsporteDAO dao = new EsporteDAO();
+        dao.insert(esporte);
     }
     
 }

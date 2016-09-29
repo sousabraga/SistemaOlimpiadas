@@ -7,8 +7,12 @@ package br.estacio.sistemaolimpiada.controller;
 
 import br.estacio.sistemaolimpiada.model.RegraDeNegocio;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +28,44 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "FrontControllerServlet", urlPatterns = {"/sistema"})
 public class FrontControllerServlet extends HttpServlet {
 
+    public static final String CAMINHO_KEY = "caminho";
+    public static final String REGRA_DE_NEGOCIO_KEY = "regraDeNegocio";
     private static final String ENCODING = "UTF-8";
+    private static final Map<String, String> CAMINHO;
+    private static final String CAMINHO_SUCESSO = "pagina_sucesso.jsp";
+    static {
+        CAMINHO = new HashMap<>();
+        CAMINHO.put("CadastroEsporte", "lista_esportes.jsp");
+        CAMINHO.put("CadastroPais", "lista_paises.jsp");
+        CAMINHO.put("CadastroMedalhista", "ranking.jsp");
+        CAMINHO.put("ExclusaoEsporte", "lista_esportes.jsp");
+        CAMINHO.put("ExclusaoPais", "lista_paises.jsp");
+    };
+    
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        request.setCharacterEncoding(ENCODING);
+        response.setCharacterEncoding(ENCODING);
+        
+        String parametroRegraDeNegocio = request.getParameter(REGRA_DE_NEGOCIO_KEY);
+        
+        RegraDeNegocio regraDeNegocio = instanciarRegraDeNegocio(parametroRegraDeNegocio);
+        
+        Map<String, String[]> parametrosResposta = new HashMap<>();
+       
+        regraDeNegocio.executarRegraDeNegocio(request.getParameterMap(), parametrosResposta);
+        
+        if (!parametrosResposta.isEmpty()) {
+            Set<String> chaves = parametrosResposta.keySet();
+            for (String chave : chaves)
+                request.setAttribute(chave, parametrosResposta.get(chave));
+        }
+        
+        request.setAttribute(CAMINHO_KEY, CAMINHO.get(parametroRegraDeNegocio));
+        
+        RequestDispatcher rq = request.getRequestDispatcher(CAMINHO_SUCESSO);
+        rq.forward(request, response);
+    }
     
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -37,16 +78,7 @@ public class FrontControllerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    
-        request.setCharacterEncoding(ENCODING);
-        response.setCharacterEncoding(ENCODING);
-        
-        RegraDeNegocio regraDeNegocio = instanciarRegraDeNegocio(request);
-        
-        String caminhoPagina = regraDeNegocio.executarRegraDeNegocio(request, response);
-        
-        request.getRequestDispatcher(caminhoPagina).forward(request, response);
-
+        processRequest(request, response);
     }
     
     /**
@@ -59,37 +91,30 @@ public class FrontControllerServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
+            throws ServletException, IOException {   
         response.sendRedirect("index.jsp");
     }
 
-    private RegraDeNegocio instanciarRegraDeNegocio(HttpServletRequest request) {
-        StringBuilder regraDeNegocioBuilder = new StringBuilder();
+    private RegraDeNegocio instanciarRegraDeNegocio(String nomeDaClasse) {
+        StringBuilder nomeTotalmenteQualificado = new StringBuilder("br.estacio.sistemaolimpiada.model.");      
         
-        String caminhoBase = "br.estacio.sistemaolimpiada.model.";      
+        if (nomeDaClasse == null || nomeDaClasse.compareTo("") == 0) 
+            throw new IllegalArgumentException("Não é possível executar esta operação.");
         
-        String regraDeNegocio = request.getParameter("regraDeNegocio");
-    
-        if (regraDeNegocio == null) 
-            throw new IllegalArgumentException("Não é possível executar essa operação.");
+        nomeTotalmenteQualificado.append(nomeDaClasse);
         
-        regraDeNegocioBuilder.append(caminhoBase);
-        regraDeNegocioBuilder.append(regraDeNegocio);
-        
-        RegraDeNegocio regraDeNegocioServlet = null;
+        RegraDeNegocio regraDeNegocio = null;
         
         try {
+            Class<?> classe = Class.forName(nomeTotalmenteQualificado.toString());
             
-            Class<?> classe = Class.forName(regraDeNegocioBuilder.toString());
+            regraDeNegocio = (RegraDeNegocio) classe.newInstance();
             
-            regraDeNegocioServlet = (RegraDeNegocio) classe.newInstance();
-            
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-            Logger.getLogger(FrontControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            Logger.getLogger(FrontControllerServlet.class.getName()).log(Level.SEVERE, null, e);
         }
         
-        return regraDeNegocioServlet;
+        return regraDeNegocio;
     }
     
 }
