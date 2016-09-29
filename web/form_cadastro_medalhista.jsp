@@ -84,7 +84,7 @@
                     
                     <br/><br/>
                     
-                     <button type="submit" form="cadastroMedalhista" class="btn btn-primary">
+                     <button type="submit" class="btn btn-primary">
                         <span class="glyphicon glyphicon-plus-sign"></span>
                         Cadastrar Medalhista
                     </button> 
