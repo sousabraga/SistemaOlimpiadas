@@ -84,13 +84,17 @@
                     </thead>
                     <tbody>
                         <% for (Pais pais : paises) { %>
-                            
                             <tr>
-                                <td><%= ++posicao + "° &nbsp" + pais.getNome() %></td>
-                                <td><%= pais.getQtdMedalhasOuro() %></td>
-                                <td><%= pais.getQtdMedalhasPrata() %></td>
-                                <td><%= pais.getQtdMedalhasBronze() %></td>
-                                <td><%= pais.getTotalMedalhas() %></td>
+                                <td>
+                                    <%= ++posicao + "°" %>
+                                    <a href="lista_conquistas.jsp?codigo=<%= pais.getCodigo() %>&nome=<%= pais.getNome() %>">
+                                        <%= "&nbsp" + pais.getNome() %>
+                                    </a>
+                                </td>
+                                <td><%= "&nbsp&nbsp&nbsp" + pais.getQtdMedalhasOuro() %></td>
+                                <td><%= "&nbsp&nbsp&nbsp" + pais.getQtdMedalhasPrata() %></td>
+                                <td><%= "&nbsp&nbsp&nbsp" + pais.getQtdMedalhasBronze() %></td>
+                                <td><%= "&nbsp&nbsp&nbsp&nbsp&nbsp" + pais.getTotalMedalhas() %></td>
                             </tr>
                         <% } %>
                     </tbody>

@@ -39,3 +39,20 @@ form {
 #painel {
     max-width: 500px;
 }
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: blue;
+}
+
+a:active {
+    color: black;
+}

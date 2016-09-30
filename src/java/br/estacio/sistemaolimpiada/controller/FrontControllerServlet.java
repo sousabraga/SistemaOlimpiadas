@@ -32,6 +32,7 @@ public class FrontControllerServlet extends HttpServlet {
     public static final String REGRA_DE_NEGOCIO_KEY = "regraDeNegocio";
     private static final String ENCODING = "UTF-8";
     private static final Map<String, String[]> CAMINHO;
+    
     static {
         CAMINHO = new HashMap<>();
         CAMINHO.put("CadastroEsporte", new String[] {"lista_esportes.jsp", "cadastro_sucesso.jsp"});
@@ -39,7 +40,7 @@ public class FrontControllerServlet extends HttpServlet {
         CAMINHO.put("CadastroMedalhista", new String[] {"ranking.jsp", "cadastro_sucesso.jsp"});
         CAMINHO.put("ExclusaoEsporte", new String[] {"lista_esportes.jsp", "exclusao_sucesso.jsp"});
         CAMINHO.put("ExclusaoPais", new String[] {"lista_paises.jsp","exclusao_sucesso.jsp"});
-    };
+    }
     
     private void processRequest(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {

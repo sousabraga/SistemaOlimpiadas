@@ -5,14 +5,18 @@
  */
 package br.estacio.sistemaolimpiada.dao;
 
+import br.estacio.sistemaolimpiada.entity.Esporte;
 import br.estacio.sistemaolimpiada.entity.Medalha;
 import br.estacio.sistemaolimpiada.entity.Pais;
+import br.estacio.sistemaolimpiada.util.EsporteComMedalhas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -192,6 +196,96 @@ public class PaisDAO implements DAO<Pais> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    
+    public List<EsporteComMedalhas> getTotalMedalhasPorEsporte(long codigoPais) {
+        String sqlEsportes = "SELECT * FROM esportes WHERE codigo IN (SELECT codigo_esporte FROM paises_esportes WHERE codigo_pais = ?)";
+
+        String sqlMedalhasOuro = "SELECT COUNT(*) AS ouro FROM paises_esportes WHERE codigo_esporte = ? AND medalha = 1";
+        String sqlMedalhasPrata = "SELECT COUNT(*) AS prata FROM paises_esportes WHERE codigo_esporte = ? AND medalha = 2";
+        String sqlMedalhasBronze = "SELECT COUNT(*) AS bronze FROM paises_esportes WHERE codigo_esporte = ? AND medalha = 3";
+        
+        List<Esporte> esportes = new ArrayList<>();
+        
+        List<EsporteComMedalhas> medalhasPorEsporte = new ArrayList<>();
+        
+        int totalOuro = 0;
+        int totalPrata = 0;
+        int totalBronze = 0;
+        
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null; 
+        
+        try {
+            connection = ConnectionFactory.getConnection();
+            
+            ps = connection.prepareStatement(sqlEsportes);
+            ps.setLong(1, codigoPais);
+            
+            rs = ps.executeQuery();
+        
+            while (rs.next()) {
+                Esporte esporte = new Esporte();
+                esporte.setCodigo(rs.getLong("codigo"));
+                esporte.setNome(rs.getString("nome"));
+                
+                esportes.add(esporte);
+            }
+            
+            if (!esportes.isEmpty()) {
+                for (Esporte esporte : esportes) {
+                    ps = connection.prepareStatement(sqlMedalhasOuro);
+                    ps.setLong(1, esporte.getCodigo());
+                    
+                    rs = ps.executeQuery();
+                    
+                    if (rs.next()) {
+                        totalOuro = rs.getInt("ouro");
+                    }
+                    
+                    ps = connection.prepareStatement(sqlMedalhasPrata);
+                    ps.setLong(1, esporte.getCodigo());
+                    
+                    rs = ps.executeQuery();
+                    
+                    if (rs.next()) {
+                        totalPrata = rs.getInt("prata");
+                    }
+                    
+                    ps = connection.prepareStatement(sqlMedalhasBronze);
+                    ps.setLong(1, esporte.getCodigo());
+                    
+                    rs = ps.executeQuery();
+                    
+                    if (rs.next()) {
+                        totalBronze = rs.getInt("bronze");
+                    }
+                    
+                    EsporteComMedalhas esporteComMedalhas = new EsporteComMedalhas();
+                    esporteComMedalhas.setNome(esporte.getNome());
+                    esporteComMedalhas.setMedalhasOuro(totalOuro);
+                    esporteComMedalhas.setMedalhasPrata(totalPrata);
+                    esporteComMedalhas.setMedalhasBronze(totalBronze);
+                    
+                    medalhasPorEsporte.add(esporteComMedalhas);
+                }
+            }
+            
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                rs.close();
+                ps.close();
+                connection.close();
+            } catch (SQLException | NullPointerException ex) {
+                Logger.getLogger(PaisDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
+        return medalhasPorEsporte;
     }
     
 }
