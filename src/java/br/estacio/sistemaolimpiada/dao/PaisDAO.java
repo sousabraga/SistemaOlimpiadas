@@ -201,9 +201,9 @@ public class PaisDAO implements DAO<Pais> {
     public List<EsporteComMedalhas> getTotalMedalhasPorEsporte(long codigoPais) {
         String sqlEsportes = "SELECT * FROM esportes WHERE codigo IN (SELECT codigo_esporte FROM paises_esportes WHERE codigo_pais = ?)";
 
-        String sqlMedalhasOuro = "SELECT COUNT(*) AS ouro FROM paises_esportes WHERE codigo_esporte = ? AND medalha = 1";
-        String sqlMedalhasPrata = "SELECT COUNT(*) AS prata FROM paises_esportes WHERE codigo_esporte = ? AND medalha = 2";
-        String sqlMedalhasBronze = "SELECT COUNT(*) AS bronze FROM paises_esportes WHERE codigo_esporte = ? AND medalha = 3";
+        String sqlMedalhasOuro = "SELECT COUNT(*) AS ouro FROM paises_esportes WHERE codigo_pais = ? AND codigo_esporte = ? AND medalha = 1";
+        String sqlMedalhasPrata = "SELECT COUNT(*) AS prata FROM paises_esportes WHERE codigo_pais = ? AND codigo_esporte = ? AND medalha = 2";
+        String sqlMedalhasBronze = "SELECT COUNT(*) AS bronze FROM paises_esportes WHERE codigo_pais = ? AND codigo_esporte = ? AND medalha = 3";
         
         List<Esporte> esportes = new ArrayList<>();
         
@@ -236,7 +236,8 @@ public class PaisDAO implements DAO<Pais> {
             if (!esportes.isEmpty()) {
                 for (Esporte esporte : esportes) {
                     ps = connection.prepareStatement(sqlMedalhasOuro);
-                    ps.setLong(1, esporte.getCodigo());
+                    ps.setLong(1, codigoPais);
+                    ps.setLong(2, esporte.getCodigo());
                     
                     rs = ps.executeQuery();
                     
@@ -244,8 +245,12 @@ public class PaisDAO implements DAO<Pais> {
                         totalOuro = rs.getInt("ouro");
                     }
                     
+                    rs.close();
+                    ps.close();
+                    
                     ps = connection.prepareStatement(sqlMedalhasPrata);
-                    ps.setLong(1, esporte.getCodigo());
+                    ps.setLong(1, codigoPais);
+                    ps.setLong(2, esporte.getCodigo());
                     
                     rs = ps.executeQuery();
                     
@@ -253,8 +258,12 @@ public class PaisDAO implements DAO<Pais> {
                         totalPrata = rs.getInt("prata");
                     }
                     
+                    rs.close();
+                    ps.close();
+                    
                     ps = connection.prepareStatement(sqlMedalhasBronze);
-                    ps.setLong(1, esporte.getCodigo());
+                    ps.setLong(1, codigoPais);
+                    ps.setLong(2, esporte.getCodigo());
                     
                     rs = ps.executeQuery();
                     
