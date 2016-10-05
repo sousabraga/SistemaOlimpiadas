@@ -26,8 +26,8 @@
                     <input name="regraDeNegocio" type="hidden" value="CadastroPais"/>
                     
                     <div class="form-group">
-                        <label for="pais">Nome do País:</label>
-                        <input name="nomePais" id="pais" type="text" class="form-control" autofocus="true"/> 
+                        <label class="control-label" for="pais">Nome do País:</label>
+                        <input name="nomePais" id="pais" type="text" class="form-control" autofocus required/> 
                     </div>
                     
                     <button type="submit" class="btn btn-primary">

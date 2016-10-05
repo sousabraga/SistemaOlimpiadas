@@ -26,8 +26,8 @@
                     <input name="regraDeNegocio" type="hidden" value="CadastroEsporte"/>
                     
                     <div class="form-group">
-                        <label for="esporte">Nome do Esporte:</label>
-                        <input name="nomeEsporte" id="esporte" type="text" class="form-control" autofocus="true"/> 
+                        <label class="control-label" for="esporte">Nome do Esporte:</label>
+                        <input name="nomeEsporte" id="esporte" type="text" class="form-control" autofocus required/> 
                     </div>
                     
                     <button type="submit" class="btn btn-primary">

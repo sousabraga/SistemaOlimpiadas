@@ -13,8 +13,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <!-- Bibliotecas CSS -->
         <link rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        
+        <!-- Bibliotecas JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
         <link rel="stylesheet" type="text/css" href="resources/estilos.css">
+        
         <title>Lista de Países</title>
     </head>
     <body>
@@ -69,8 +78,8 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th><h3>Países Cadastrados<h3></th>
-                            <th><h3>Ações<h3></th>
+                            <th><h3>Países Cadastrados</h3></th>
+                            <th><h3>Ações</h3></th>
                         </tr>    
                     </thead>
                     <tbody>
@@ -85,14 +94,35 @@
                                         <button name="codigoPais" type="submit" value="<%= pais.getCodigo() %>" class="btn btn-warning">
                                             <span class="glyphicon glyphicon-pencil"></span>
                                         </button>  
-                                    </form>
-                                        
-                                    <form action="sistema" class="list-buttons" method="POST">
-                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoPais"/>
-                                        <button name="codigoPais" type="submit" value="<%= pais.getCodigo() %>" class="btn btn-danger">
-                                            <span class="glyphicon glyphicon-trash"></span>
-                                        </button> 
-                                    </form>
+                                    </form>  
+                                    
+                                    <button  type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" >
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button> 
+                             
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="myModal" role="dialog">
+                                        <div class="modal-dialog">
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Exclusão País</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Realmente deseja excluir o país?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form action="sistema" class="list-buttons" method="POST">
+                                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoPais"/>
+                                                        <button name="codigoPais" type="submit" value="<%= pais.getCodigo() %>" class="btn btn-primary">Sim</button> 
+                                                    </form>   
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    
                                 </td>
                             </tr>
                         
@@ -102,12 +132,12 @@
                 
                <%   } %>
                
-               <a href="form_cadastro_pais.jsp">
+                <a href="form_cadastro_pais.jsp">
                     <button type="button" class="btn btn-primary">
                         <span class="glyphicon glyphicon-plus-sign"></span>
                         Cadastrar País
                     </button>
-               </a>
+                </a> 
                
             </div>
         </section> 

@@ -58,7 +58,7 @@
                     <input type="hidden" name="regraDeNegocio" value="CadastroMedalhista"/>
                     
                     <label for="pais">País:</label><br/>
-                    <select name="codigoPais" id="pais" class="selectpicker" title="-- Selecione o país --">
+                    <select name="codigoPais" id="pais" class="selectpicker" title="-- Selecione o país --" required>
                         <% for (Pais pais : paises) { %>
                             <option value="<%= pais.getCodigo() %>"><%= pais.getNome() %></option>
                         <% } %>
@@ -67,7 +67,7 @@
                     <br/><br/>
                     
                     <label for="esporte">Esporte:</label><br/>
-                    <select name="codigoEsporte" id="esporte" class="selectpicker" title="-- Selecione o esporte --">
+                    <select name="codigoEsporte" id="esporte" class="selectpicker" title="-- Selecione o esporte --" required>
                         <% for (Esporte esporte : esportes) { %>
                             <option value="<%= esporte.getCodigo() %>"><%= esporte.getNome() %></option>
                         <% } %>
@@ -76,7 +76,7 @@
                     <br/><br/>
                     
                     <label for="medalha">Medalha:</label><br/>
-                    <select name="codigoMedalha" id="medalha" class="selectpicker" title="-- Selecione a medalha --">
+                    <select name="codigoMedalha" id="medalha" class="selectpicker" title="-- Selecione a medalha --" required>
                         <option value="<%= Medalha.OURO.getCodigo() %>"><%= Medalha.OURO.getDescricao() %></option>
                         <option value="<%= Medalha.PRATA.getCodigo() %>"><%= Medalha.PRATA.getDescricao() %></option>
                         <option value="<%= Medalha.BRONZE.getCodigo() %>"><%= Medalha.BRONZE.getDescricao() %></option>

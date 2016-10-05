@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.css">
@@ -25,12 +25,12 @@
 
                 <form action="sistema" id="formulario" method="POST">
                     <div class="form-group">
-                        <label for="usuario">Usuário:</label>
-                        <input name="usuario" id="usuario" type="text" class="form-control" autofocus="true"/>
+                        <label class="control-label" for="usuario">Usuário:</label>
+                        <input name="usuario" id="usuario" type="text" class="form-control" autofocus required/>
                     </div>
                     <div class="form-group">
-                      <label for="senha">Senha:</label>
-                      <input name="senha" id="senha" type="password" class="form-control"/>
+                      <label class="control-label" for="senha">Senha:</label>
+                      <input name="senha" id="senha" type="password" class="form-control" required/>
                     </div>
                 </form>
 
