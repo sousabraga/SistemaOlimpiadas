@@ -25,3 +25,18 @@ CREATE TABLE paises_esportes (
     CONSTRAINT fk_paises_esportes_codigo_pais FOREIGN KEY (codigo_pais) REFERENCES paises (codigo) ON DELETE CASCADE,
     CONSTRAINT fk_paises_esportes_codigo_esporte FOREIGN KEY (codigo_esporte) REFERENCES esportes (codigo) ON DELETE CASCADE
 );
+
+INSERT INTO paises (nome) VALUES ('Brasil');
+INSERT INTO paises (nome) VALUES ('Alemanha');
+INSERT INTO paises (nome) VALUES ('Argentina');
+INSERT INTO paises (nome) VALUES ('Portugal');
+INSERT INTO paises (nome) VALUES ('China');
+INSERT INTO paises (nome) VALUES ('Jamaica');
+
+INSERT INTO esportes (nome) VALUES ('Karatê');
+INSERT INTO esportes (nome) VALUES ('Futebol');
+INSERT INTO esportes (nome) VALUES ('Boxe');
+INSERT INTO esportes (nome) VALUES ('Ping Pong');
+INSERT INTO esportes (nome) VALUES ('Vôlei');
+INSERT INTO esportes (nome) VALUES ('Basquete');
+INSERT INTO esportes (nome) VALUES ('Natação');

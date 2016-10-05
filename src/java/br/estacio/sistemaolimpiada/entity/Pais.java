@@ -69,11 +69,19 @@ public class Pais implements Comparable<Pais> {
 
     @Override
     public int compareTo(Pais outroPais) {
-        if (this.getTotalMedalhas() < outroPais.getTotalMedalhas())
+        if (this.getQtdMedalhasOuro() < outroPais.getQtdMedalhasOuro())
             return 1;
-        else if (this.getTotalMedalhas() > outroPais.getTotalMedalhas())
+        else if (this.getQtdMedalhasOuro() > outroPais.getQtdMedalhasOuro())
             return -1;
-        else 
+        else if (this.getQtdMedalhasPrata() < outroPais.getQtdMedalhasPrata())
+            return 1;
+        else if (this.getQtdMedalhasPrata() > outroPais.getQtdMedalhasPrata())
+            return -1;
+        else if (this.getQtdMedalhasBronze() < outroPais.getQtdMedalhasBronze())
+            return 1;
+        else if (this.getQtdMedalhasBronze() > outroPais.getQtdMedalhasBronze())
+            return -1;
+        else
             return 0;
     }
     
