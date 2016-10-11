@@ -48,6 +48,7 @@
                         request.getSession().removeAttribute("msgSucesso");
                 %>    
                         <div class="alert alert-success fade in" role="alert">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                             <span class="glyphicon glyphicon-ok-sign"/></span>
                             <%= msgSucesso %>
                         </div>  
