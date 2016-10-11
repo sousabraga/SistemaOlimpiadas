@@ -7,7 +7,6 @@
 <%@page import="br.estacio.sistemaolimpiada.dao.PaisDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="br.estacio.sistemaolimpiada.entity.Pais"%>
-<%@page import="br.estacio.sistemaolimpiada.entity.Pais"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,11 +15,11 @@
         
         <!-- Bibliotecas CSS -->
         <link rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
         
         <!-- Bibliotecas JavaScript -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="resources/bootstrap/js/bootstrap.min.js"></script>
         
         <link rel="stylesheet" type="text/css" href="resources/estilos.css">
         
@@ -96,12 +95,12 @@
                                         </button>  
                                     </form>  
                                     
-                                    <button  type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" >
+                                    <button  type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal<%= pais.getCodigo() %>">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </button> 
                              
                                     <!-- Modal -->
-                                    <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal fade" id="myModal<%= pais.getCodigo() %>" role="dialog">
                                         <div class="modal-dialog">
                                             <!-- Modal content-->
                                             <div class="modal-content">
@@ -110,12 +109,12 @@
                                                     <h4 class="modal-title">Exclusão País</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Realmente deseja excluir o país?</p>
+                                                    <p>Realmente deseja excluir o país <strong><%= pais.getNome() %></strong>?</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <form action="sistema" class="list-buttons" method="POST">
                                                         <input name="regraDeNegocio" type="hidden" value="ExclusaoPais"/>
-                                                        <button name="codigoPais" type="submit" value="<%= pais.getCodigo() %>" class="btn btn-primary">Sim</button> 
+                                                        <button name="codigoPais" type="submit" value='<%= pais.getCodigo() %>' class="btn btn-primary">Sim</button> 
                                                     </form>   
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                                                 </div>

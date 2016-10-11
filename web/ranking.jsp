@@ -75,7 +75,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th><h3>País<h3></th>
+                            <th><h3>País</h3></th>
                             <th><img src="resources/imagens/medalhas/medalha_ouro.png" title="Ouro" alt="Ouro"/></th>
                             <th><img src="resources/imagens/medalhas/medalha_prata.png" title="Prata" alt="Prata"/></th>
                             <th><img src="resources/imagens/medalhas/medalha_bronze.png" title="Bronze" alt="Bronze"/></th>
