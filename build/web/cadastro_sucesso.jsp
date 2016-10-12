@@ -11,9 +11,15 @@
     <%
       String caminho = (String) request.getAttribute("caminho");
       
-      String mensagemSucesso = "Cadastro efetuado com sucesso.";
+      String mensagemErro[] = (String[]) request.getAttribute("msgErro");
       
-      request.getSession().setAttribute("msgSucesso", mensagemSucesso);
+      if (mensagemErro != null) {
+         request.getSession().setAttribute("msgErro", mensagemErro[0]); 
+      } else {
+        String mensagemSucesso = "Cadastro efetuado com sucesso.";
+      
+        request.getSession().setAttribute("msgSucesso", mensagemSucesso);
+      }
       
       response.sendRedirect(caminho);
     %>

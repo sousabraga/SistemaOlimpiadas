@@ -43,6 +43,7 @@
                 
                 <% 
                     String msgSucesso = (String) request.getSession().getAttribute("msgSucesso");
+                    String msgErro = (String) request.getSession().getAttribute("msgErro");
                     
                     if (msgSucesso != null) { 
                         request.getSession().removeAttribute("msgSucesso");
@@ -51,7 +52,16 @@
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                             <span class="glyphicon glyphicon-ok-sign"/></span>
                             <%= msgSucesso %>
-                        </div>  
+                        </div> 
+                        
+                <%       
+                    } else if (msgErro != null) {
+                %>
+                        <div class="alert alert-danger fade in" role="alert">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <span class="glyphicon glyphicon-alert"/></span>
+                            <%= msgErro %>
+                        </div>
                 <%       
                     }
                 %>

@@ -5,6 +5,7 @@
  */
 package br.estacio.sistemaolimpiada.dao;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ public interface DAO<T> {
     
     public void update(T tipo);
     
-    public void insert(T tipo);
+    public void insert(T tipo) throws SQLIntegrityConstraintViolationException;
     
     public void delete(long codigo);
     

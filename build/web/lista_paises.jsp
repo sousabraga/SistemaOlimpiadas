@@ -43,6 +43,7 @@
                 
                 <% 
                     String msgSucesso = (String) request.getSession().getAttribute("msgSucesso");
+                    String msgErro = (String) request.getSession().getAttribute("msgErro");
                     
                     if (msgSucesso != null) { 
                         request.getSession().removeAttribute("msgSucesso");
@@ -53,8 +54,14 @@
                             <%= msgSucesso %>
                         </div>  
                 <%       
-                    }
+                    } else if (msgErro != null) {
                 %>
+                        <div class="alert alert-danger fade in" role="alert">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <span class="glyphicon glyphicon-alert"/></span>
+                            <%= msgErro %>
+                        </div>
+                <% } %>
                 
                 <% 
                     PaisDAO paisDAO = new PaisDAO();
@@ -67,6 +74,7 @@
                 </br>
                 
                 <div class="alert alert-danger fade in" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     <span class="glyphicon glyphicon-alert"/></span>
                     Nenhum país foi encontrado.
                 </div>

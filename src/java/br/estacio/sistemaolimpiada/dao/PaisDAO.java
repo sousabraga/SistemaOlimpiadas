@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -51,7 +52,7 @@ public class PaisDAO implements DAO<Pais> {
     }
 
     @Override
-    public void insert(Pais pais) {
+    public void insert(Pais pais) throws SQLIntegrityConstraintViolationException {
         String sql = String.format("INSERT INTO %s (%s) VALUES (?)", TABLE, COL_NOME);
         
         try (
@@ -63,6 +64,8 @@ public class PaisDAO implements DAO<Pais> {
             ps.execute();               
             
         } catch (SQLException e) {
+            if (e instanceof SQLIntegrityConstraintViolationException)
+                throw new SQLIntegrityConstraintViolationException();
             throw new RuntimeException(e);
         }
            

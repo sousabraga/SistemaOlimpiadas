@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class EsporteDAO implements DAO<Esporte> {
     }
 
     @Override
-    public void insert(Esporte esporte) {
+    public void insert(Esporte esporte) throws SQLIntegrityConstraintViolationException {
         String sql = String.format("INSERT INTO %s (%s) VALUES (?)", TABLE, COL_NOME);
         
         try (
@@ -60,6 +61,8 @@ public class EsporteDAO implements DAO<Esporte> {
             ps.execute();
             
         } catch (SQLException e) {
+            if (e instanceof SQLIntegrityConstraintViolationException)
+                throw new SQLIntegrityConstraintViolationException();
             throw new RuntimeException(e);
         }
     }

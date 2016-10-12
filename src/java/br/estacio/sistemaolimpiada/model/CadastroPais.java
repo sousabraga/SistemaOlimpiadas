@@ -7,6 +7,7 @@ package br.estacio.sistemaolimpiada.model;
 
 import br.estacio.sistemaolimpiada.dao.PaisDAO;
 import br.estacio.sistemaolimpiada.entity.Pais;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Map;
 
 /**
@@ -27,7 +28,15 @@ public class CadastroPais implements RegraDeNegocio {
         pais.setNome(nomePais);
         
         PaisDAO dao = new PaisDAO();
-        dao.insert(pais);   
+        
+        try {   
+            dao.insert(pais);
+        } catch (SQLIntegrityConstraintViolationException ex) {
+            String msgErro[] = new String[1]; 
+            msgErro[0] = "Não foi possível inserir. Motivo: país já está cadastrado.";
+            
+            parametrosResposta.put("msgErro", msgErro);
+        }
     }
     
 }

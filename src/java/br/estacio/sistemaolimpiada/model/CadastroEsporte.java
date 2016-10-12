@@ -7,6 +7,7 @@ package br.estacio.sistemaolimpiada.model;
 
 import br.estacio.sistemaolimpiada.dao.EsporteDAO;
 import br.estacio.sistemaolimpiada.entity.Esporte;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Map;
 
 /**
@@ -27,7 +28,15 @@ public class CadastroEsporte implements RegraDeNegocio {
         esporte.setNome(nome);
         
         EsporteDAO dao = new EsporteDAO();
-        dao.insert(esporte);
+        
+        try {
+            dao.insert(esporte);
+        } catch (SQLIntegrityConstraintViolationException ex) {
+            String msgErro[] = new String[1]; 
+            msgErro[0] = "Não foi possível inserir. Motivo: esporte já está cadastrado.";
+            
+            parametrosResposta.put("msgErro", msgErro);
+        }
     }
     
 }
