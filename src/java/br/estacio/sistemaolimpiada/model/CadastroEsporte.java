@@ -21,7 +21,7 @@ public class CadastroEsporte implements RegraDeNegocio {
     public static final String NOME_ESPORTE_KEY = "nomeEsporte";
     
     @Override
-    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, String[]> parametrosResposta) {
+    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, Object[]> parametrosResposta) {
         String nome = parametrosRequisicao.get(NOME_ESPORTE_KEY)[0];
         
         Esporte esporte = new Esporte();

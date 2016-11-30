@@ -19,7 +19,7 @@ public class ExclusaoEsporte implements RegraDeNegocio {
     public static final String CODIGO_ESPORTE_KEY = "codigoEsporte";
     
     @Override
-    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, String[]> parametrosResposta) { 
+    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, Object[]> parametrosResposta) { 
         long codigoEsporte = Long.parseLong(parametrosRequisicao.get(CODIGO_ESPORTE_KEY)[0]);
         
         EsporteDAO dao = new EsporteDAO();

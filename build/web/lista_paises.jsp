@@ -50,7 +50,7 @@
                 %>    
                         <div class="alert alert-success fade in" role="alert">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <span class="glyphicon glyphicon-ok-sign"/></span>
+                            <span class="glyphicon glyphicon-ok-sign"></span>
                             <%= msgSucesso %>
                         </div>  
                 <%       
@@ -58,7 +58,7 @@
                 %>
                         <div class="alert alert-danger fade in" role="alert">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <span class="glyphicon glyphicon-alert"/></span>
+                            <span class="glyphicon glyphicon-alert"></span>
                             <%= msgErro %>
                         </div>
                 <% } %>

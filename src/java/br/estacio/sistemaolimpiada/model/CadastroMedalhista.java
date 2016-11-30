@@ -21,7 +21,7 @@ public class CadastroMedalhista implements RegraDeNegocio {
     public static final String CODIGO_MEDALHA_KEY = "codigoMedalha";
          
     @Override
-    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, String[]> parametrosResposta) {
+    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, Object[]> parametrosResposta) {
         long codigoPais = Long.valueOf(parametrosRequisicao.get(CODIGO_PAIS_KEY)[0]);
         long codigoEsporte = Long.valueOf(parametrosRequisicao.get(CODIGO_ESPORTE_KEY)[0]);
         int codigoMedalha = Integer.valueOf(parametrosRequisicao.get(CODIGO_MEDALHA_KEY)[0]);

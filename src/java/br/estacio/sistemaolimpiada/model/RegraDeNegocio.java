@@ -15,6 +15,6 @@ import java.util.Map;
  */
 public interface RegraDeNegocio {
     
-    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, String[]> parametrosResposta);
+    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, Object[]> parametrosResposta);
     
 }

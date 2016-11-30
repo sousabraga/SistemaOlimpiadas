@@ -4,6 +4,7 @@
     Authors    : Matheus Braga, João Lucas e Felipe Bruno
 --%>
 
+<%@page import="br.estacio.sistemaolimpiada.entity.Usuario"%>
 <%@page import="java.util.Collections"%>
 <%@page import="java.util.List"%>
 <%@page import="br.estacio.sistemaolimpiada.entity.Pais"%>
@@ -13,7 +14,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Bibliotecas CSS -->
         <link rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+        
+        <!-- Bibliotecas JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+        
         <link rel="stylesheet" type="text/css" href="resources/estilos.css">
         <title>Sistema Olimpíadas</title>
     </head>
@@ -40,9 +48,10 @@
                         request.getSession().removeAttribute("msgSucesso");
                 %>    
                         <div class="alert alert-success fade in" role="alert">
-                            <span class="glyphicon glyphicon-ok-sign"/></span>
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <span class="glyphicon glyphicon-ok-sign"></span>
                             <%= msgSucesso %>
-                        </div>  
+                        </div>
                 <%       
                     }
                 %>
@@ -102,12 +111,18 @@
                         
                 <% } %>    
                 
-                <a href="form_cadastro_medalhista.jsp">
-                    <button type="button" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-plus-sign"></span>
-                        Cadastrar Medalhista
-                    </button>
-               </a>
+                <% 
+                    Usuario usuarioLogado = (Usuario) request.getSession().getAttribute("usuarioLogado"); 
+            
+                    if (usuarioLogado != null) {
+                %>
+                        <a href="form_cadastro_medalhista.jsp">
+                            <button type="button" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-plus-sign"></span>
+                                Cadastrar Medalhista
+                            </button>
+                        </a>
+                <% } %>
                 
             </div>
         </section> 

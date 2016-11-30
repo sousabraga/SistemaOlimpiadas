@@ -26,6 +26,15 @@ CREATE TABLE paises_esportes (
     CONSTRAINT fk_paises_esportes_codigo_esporte FOREIGN KEY (codigo_esporte) REFERENCES esportes (codigo) ON DELETE CASCADE
 );
 
+CREATE TABLE usuarios (
+    codigo BIGINT NOT NULL AUTO_INCREMENT,
+    login VARCHAR(45) NOT NULL,
+    senha VARCHAR(45) NOT NULL,
+    CONSTRAINT pk_usuarios PRIMARY KEY (codigo)
+);
+
+INSERT INTO usuarios (login, senha) VALUES ('root', 'Root1234');
+
 INSERT INTO paises (nome) VALUES ('Brasil');
 INSERT INTO paises (nome) VALUES ('Alemanha');
 INSERT INTO paises (nome) VALUES ('Argentina');

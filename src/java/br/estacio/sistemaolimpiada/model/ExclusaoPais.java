@@ -19,7 +19,7 @@ public class ExclusaoPais implements RegraDeNegocio {
     public static final String CODIGO_PAIS_KEY = "codigoPais";
     
     @Override
-    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, String[]> parametrosResposta) {
+    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, Object[]> parametrosResposta) {
         long codigoPais = Long.parseLong(parametrosRequisicao.get(CODIGO_PAIS_KEY)[0]);
         
         PaisDAO dao = new PaisDAO();

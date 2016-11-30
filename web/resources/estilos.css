@@ -56,3 +56,8 @@ a:hover {
 a:active {
     color: black;
 }
+
+#mensagemErro {
+  padding: 5px;
+  font-size: 15px;
+}

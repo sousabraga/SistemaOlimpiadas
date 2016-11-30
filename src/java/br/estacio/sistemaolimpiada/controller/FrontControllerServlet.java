@@ -40,6 +40,7 @@ public class FrontControllerServlet extends HttpServlet {
         CAMINHO.put("CadastroMedalhista", new String[] {"ranking.jsp", "cadastro_sucesso.jsp"});
         CAMINHO.put("ExclusaoEsporte", new String[] {"lista_esportes.jsp", "exclusao_sucesso.jsp"});
         CAMINHO.put("ExclusaoPais", new String[] {"lista_paises.jsp","exclusao_sucesso.jsp"});
+        CAMINHO.put("Login", new String[] {"dashboard.jsp","login_sucesso.jsp"});
     }
     
     private void processRequest(HttpServletRequest request, HttpServletResponse response) 
@@ -51,7 +52,7 @@ public class FrontControllerServlet extends HttpServlet {
         
         RegraDeNegocio regraDeNegocio = instanciarRegraDeNegocio(parametroRegraDeNegocio);
         
-        Map<String, String[]> parametrosResposta = new HashMap<>();
+        Map<String, Object[]> parametrosResposta = new HashMap<>();
        
         regraDeNegocio.executarRegraDeNegocio(request.getParameterMap(), parametrosResposta);
         
@@ -67,28 +68,12 @@ public class FrontControllerServlet extends HttpServlet {
         rq.forward(request, response);
     }
     
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
     
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {   

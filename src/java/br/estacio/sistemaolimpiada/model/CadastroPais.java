@@ -21,7 +21,7 @@ public class CadastroPais implements RegraDeNegocio {
     public static final String NOME_PAIS_KEY = "nomePais";
     
     @Override
-    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, String[]> parametrosResposta) {
+    public void executarRegraDeNegocio(Map<String, String[]> parametrosRequisicao, Map<String, Object[]> parametrosResposta) {
         String nomePais = (String) parametrosRequisicao.get(NOME_PAIS_KEY)[0];
         
         Pais pais = new Pais();

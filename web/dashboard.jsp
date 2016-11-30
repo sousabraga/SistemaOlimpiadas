@@ -9,7 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Bibliotecas CSS -->
         <link rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+        
+        <!-- Bibliotecas JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+        
         <link rel="stylesheet" type="text/css" href="resources/estilos.css">
         <title>Dashboard</title>
     </head>
@@ -26,7 +33,21 @@
                         <h1 class="media-heading">Sistema Olimpíadas</h1>
                     </div>
                 </div>
-
+                <br/>
+                <% 
+                    String msgSucesso = (String) request.getSession().getAttribute("msgSucesso");
+                    
+                    if (msgSucesso != null) { 
+                        request.getSession().removeAttribute("msgSucesso");
+                %>    
+                        <div class="alert alert-success fade in" role="alert">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <span class="glyphicon glyphicon-ok-sign"></span>
+                            <%= msgSucesso %>
+                        </div> 
+                        
+                <% } %>
+                
                 <div class="page-header">
                     <h1>Dashboard</h1>
                 </div>  
