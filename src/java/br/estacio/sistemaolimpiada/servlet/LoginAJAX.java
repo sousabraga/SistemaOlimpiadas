@@ -21,7 +21,9 @@ import org.json.JSONObject;
 
 /**
  *
- * @author matheus
+ * @author Matheus Braga
+ * @author João Lucas
+ * @author Felipe Bruno
  */
 @WebServlet(name = "LoginAJAX", urlPatterns = {"/LoginAJAX"})
 public class LoginAJAX extends HttpServlet {

@@ -22,6 +22,7 @@
         <script src="resources/bootstrap/js/bootstrap.min.js"></script>
         
         <link rel="stylesheet" type="text/css" href="resources/estilos.css">
+        <script type="text/javascript" src="resources/script.js"></script>
         
         <title>Lista de Países</title>
     </head>
@@ -97,19 +98,44 @@
                                 <td><%= pais.getNome() %></td>
                                 
                                 <td>                                   
-                                    <form action="#" class="list-buttons" method="POST">
-                                        <input name="regraDeNegocio" type="hidden" value="EdicaoPais"/>
-                                        <button name="codigoPais" type="submit" value="<%= pais.getCodigo() %>" class="btn btn-warning">
-                                            <span class="glyphicon glyphicon-pencil"></span>
-                                        </button>  
-                                    </form>  
-                                    
-                                    <button  type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal<%= pais.getCodigo() %>">
+                                    <button class="btn btn-warning" data-toggle="modal" data-target="#modalEdicao<%= pais.getCodigo() %>">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </button>  
+                                                                      
+                                    <button class="btn btn-danger" data-toggle="modal" data-target="#modalExclusao<%= pais.getCodigo() %>">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </button> 
+   
+                                    <!-- Modal Edição -->
+                                    <div class="modal fade" id="modalEdicao<%= pais.getCodigo() %>" role="dialog">
+                                        <div class="modal-dialog">
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Alteração País</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Realmente deseja alterar o país <strong><%= pais.getNome() %></strong>?</p>
+                                                    <form id="formAlteracao<%= pais.getCodigo() %>" action="sistema" class="list-buttons" method="POST">
+                                                        <input type="hidden" name="regraDeNegocio" value="AlteracaoPais"/>
+                                                        <input type="hidden" name="codigoPais" value="<%= pais.getCodigo() %>"/>
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="valorInput">Novo nome:</label>
+                                                            <input name="nomePais" id="valorInput" type="text" class="form-control" value="<%= pais.getNome() %>"/> 
+                                                        </div>
+                                                    </form>  
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" form="formAlteracao<%= pais.getCodigo() %>" class="btn btn-primary" >Sim</button> 
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>     
                              
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="myModal<%= pais.getCodigo() %>" role="dialog">
+                                    <!-- Modal Exclusão -->
+                                    <div class="modal fade" id="modalExclusao<%= pais.getCodigo() %>" role="dialog">
                                         <div class="modal-dialog">
                                             <!-- Modal content-->
                                             <div class="modal-content">
@@ -122,15 +148,15 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <form action="sistema" class="list-buttons" method="POST">
-                                                        <input name="regraDeNegocio" type="hidden" value="ExclusaoPais"/>
-                                                        <button name="codigoPais" type="submit" value='<%= pais.getCodigo() %>' class="btn btn-primary">Sim</button> 
+                                                        <input type="hidden" name="regraDeNegocio" value="ExclusaoPais"/>
+                                                        <button name="codigoPais" type="submit" value="<%= pais.getCodigo() %>" class="btn btn-primary">Sim</button> 
                                                     </form>   
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div> 
-                                    
+         
                                 </td>
                             </tr>
                         

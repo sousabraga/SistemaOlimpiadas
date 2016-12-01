@@ -18,6 +18,13 @@ public class Esporte {
     
     private String nome;
     
+    public Esporte() {}
+    
+    public Esporte(long codigo, String nome) {
+        this.codigo = codigo;
+        this.nome = nome;
+    }
+    
     public void setCodigo(long codigo) {
         this.codigo = codigo;
     }

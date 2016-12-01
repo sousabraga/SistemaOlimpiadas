@@ -97,19 +97,44 @@
                             <tr>
                                 <td><%= esporte.getNome() %></td>
                                 <td>
-                                    <form action="#" class="list-buttons" method="POST">
-                                        <input name="regraDeNegocio" type="hidden" value="EdicaoEsporte"/>
-                                        <button name="codigoEsporte" type="submit" value="<%= esporte.getCodigo() %>" class="btn btn-warning">
-                                            <span class="glyphicon glyphicon-pencil"></span>
-                                        </button> 
-                                    </form>
-                                            
-                                    <button  type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal<%= esporte.getCodigo() %>" >
+                                    <button class="btn btn-warning" data-toggle="modal" data-target="#modalEdicao<%= esporte.getCodigo() %>">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </button> 
+                                    
+                                    <button class="btn btn-danger" data-toggle="modal" data-target="#modalExclusao<%= esporte.getCodigo() %>">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </button> 
                              
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="myModal<%= esporte.getCodigo() %>" role="dialog">
+                                    <!-- Modal Edição -->
+                                    <div class="modal fade" id="modalEdicao<%= esporte.getCodigo() %>" role="dialog">
+                                        <div class="modal-dialog">
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Alteração Esporte</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Realmente deseja alterar o esporte <strong><%= esporte.getNome() %></strong>?</p>
+                                                    <form id="formAlteracao<%= esporte.getCodigo() %>" action="sistema" class="list-buttons" method="POST">
+                                                        <input type="hidden" name="regraDeNegocio" value="AlteracaoEsporte"/>
+                                                        <input type="hidden" name="codigoEsporte" value="<%= esporte.getCodigo() %>"/>
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="valorInput">Novo nome:</label>
+                                                            <input name="nomeEsporte" id="valorInput" type="text" class="form-control" value="<%= esporte.getNome() %>"/> 
+                                                        </div>
+                                                    </form>  
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" form="formAlteracao<%= esporte.getCodigo() %>" class="btn btn-primary" >Sim</button> 
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>     
+                                                                                
+                                    <!-- Modal Exclusão -->
+                                    <div class="modal fade" id="modalExclusao<%= esporte.getCodigo() %>" role="dialog">
                                         <div class="modal-dialog">
                                             <!-- Modal content-->
                                             <div class="modal-content">
@@ -130,6 +155,7 @@
                                             </div>
                                         </div>
                                     </div> 
+                                                                 
                                 </td>
                             </tr>
                         

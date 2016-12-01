@@ -67,3 +67,21 @@ function criarXMLHttpRequest() {
     if (ajax == null)
         console.log("Erro ao criar o objeto XMLHttpRequest.");
 }
+
+function validaValorInput() {
+    var valorInput = document.getElementById("valorInput").value;
+    
+    var contemDigito = new RegExp(/[0-9]{1,}/).test(valorInput);
+    
+    if (contemDigito || contemCaractereEspecial) {
+        document.getElementById("mensagemErro").innerHTML = "O valor não deve conter dígitos.";
+        return false;
+    } 
+    
+    return true;
+}
+
+function limpaMensagemErro() {
+    document.getElementById("mensagemErro").innerHTML = "";
+}
+

@@ -41,6 +41,8 @@ public class FrontControllerServlet extends HttpServlet {
         CAMINHO.put("ExclusaoEsporte", new String[] {"lista_esportes.jsp", "exclusao_sucesso.jsp"});
         CAMINHO.put("ExclusaoPais", new String[] {"lista_paises.jsp","exclusao_sucesso.jsp"});
         CAMINHO.put("Login", new String[] {"dashboard.jsp","login_sucesso.jsp"});
+        CAMINHO.put("AlteracaoPais", new String[] {"lista_paises.jsp","alteracao_sucesso.jsp"});
+        CAMINHO.put("AlteracaoEsporte", new String[] {"lista_esportes.jsp","alteracao_sucesso.jsp"});
     }
     
     private void processRequest(HttpServletRequest request, HttpServletResponse response) 

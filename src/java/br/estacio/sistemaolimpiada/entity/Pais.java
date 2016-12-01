@@ -23,6 +23,13 @@ public class Pais implements Comparable<Pais> {
     
     private int qtdMedalhasBronze;
     
+    public Pais() {}
+    
+    public Pais(long codigo, String nome) {
+        this.codigo = codigo;
+        this.nome = nome;
+    } 
+    
     public long getCodigo() {
         return codigo;
     }

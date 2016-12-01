@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="resources/estilos.css">
+        <script type="text/javascript" src="resources/script.js"></script>
         <title>Cadastro de Países</title>
     </head>
     <body>
@@ -22,12 +23,15 @@
                     <h1>Cadastro de Países</h1>
                 </div>    
                 
-                <form action="sistema" method="POST">
+                <span class="label label-danger" id="mensagemErro"></span>
+                <br/><br/>
+                
+                <form action="sistema" method="POST" onsubmit="return validaValorInput();">
                     <input name="regraDeNegocio" type="hidden" value="CadastroPais"/>
                     
                     <div class="form-group">
-                        <label class="control-label" for="pais">Nome do País:</label>
-                        <input name="nomePais" id="pais" type="text" class="form-control" autofocus required/> 
+                        <label class="control-label" for="valorInput">Nome do País:</label>
+                        <input name="nomePais" id="valorInput" type="text" class="form-control" autofocus required onfocus="limpaMensagemErro();"/> 
                     </div>
                     
                     <button type="submit" class="btn btn-primary">

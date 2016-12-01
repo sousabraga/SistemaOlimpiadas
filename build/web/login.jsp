@@ -53,7 +53,7 @@
                     
                     <div class="form-group">
                         <label class="control-label" for="login">Login:</label>
-                        <input name="login" id="login" type="text" class="form-control"/>
+                        <input name="login" id="login" type="text" class="form-control" onfocus="limpaMensagemErro();"/>
                     </div>
                     <div class="form-group">
                       <label class="control-label" for="senha">Senha:</label>
