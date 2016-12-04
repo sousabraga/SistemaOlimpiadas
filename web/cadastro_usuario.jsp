@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ranking
-    Created on : Sep 17, 2016, 7:08:52 PM
+    Document   : cadastro_usuario
+    Created on : Dec 4, 2016, 6:32:13 PM
     Authors    : Matheus Braga, João Lucas e Felipe Bruno
 --%>
 
@@ -29,7 +29,7 @@
             
             <div class="container">
                 <div class="page-header">
-                    <h1>Login Administrador</h1>
+                    <h1>Cadastro de Usuário</h1>
                 </div>
 
                 <% 
@@ -47,24 +47,31 @@
 
                 <div class="mensagens">
                     <span class="label label-danger" id="mensagemErro"></span>
+                    <span class="label label-success" id="mensagemSucesso"></span>
                 </div>
                 <br/>
                 
-                <form action="sistema" id="formulario" method="POST" onsubmit="return validaFormLogin();">
-                    <input type="hidden" name="regraDeNegocio" value="Login"/>
-                    
+                <form action="#" method="POST" onsubmit="return validaFormCadastroUsuario();">
+                    <div class="form-group">
+                        <label class="control-label" for="email">E-mail:</label>
+                        <input name="email" id="email" type="email" class="form-control" onfocus="limpaMensagens();"/>
+                    </div>
                     <div class="form-group">
                         <label class="control-label" for="login">Login:</label>
-                        <input name="login" id="login" type="text" class="form-control" onfocus="limpaMensagemErro();"/>
+                        <input name="login" id="login" type="text" class="form-control" onfocus="limpaMensagens();"/>
                     </div>
                     <div class="form-group">
                       <label class="control-label" for="senha">Senha:</label>
-                      <input name="senha" id="senha" type="password" class="form-control" onfocus="validaLoginAjax();"/>
+                      <input name="senha" id="senha" type="password" class="form-control" onfocus="limpaMensagens();"/>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" for="confirmacaoSenha">Confirmação da Senha:</label>
+                      <input name="confirmacaoSenha" id="confirmacaoSenha" type="password" class="form-control" onfocus="limpaMensagens();"/>
                     </div>
                     
                     <button type="submit" class="btn btn-primary">
                         <span class="glyphicon glyphicon-log-in"></span>
-                        &nbsp Logar
+                        &nbsp Cadastrar
                     </button>
                 </form>
 

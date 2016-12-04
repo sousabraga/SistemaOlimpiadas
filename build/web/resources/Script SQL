@@ -49,3 +49,16 @@ INSERT INTO esportes (nome) VALUES ('Ping Pong');
 INSERT INTO esportes (nome) VALUES ('Vôlei');
 INSERT INTO esportes (nome) VALUES ('Basquete');
 INSERT INTO esportes (nome) VALUES ('Natação');
+
+INSERT INTO paises_esportes (codigo_pais, codigo_esporte, medalha) VALUES (1, 1, 1);
+INSERT INTO paises_esportes (codigo_pais, codigo_esporte, medalha) VALUES (1, 2, 2);
+INSERT INTO paises_esportes (codigo_pais, codigo_esporte, medalha) VALUES (1, 3, 3);
+INSERT INTO paises_esportes (codigo_pais, codigo_esporte, medalha) VALUES (1, 4, 1);
+INSERT INTO paises_esportes (codigo_pais, codigo_esporte, medalha) VALUES (1, 5, 2);
+INSERT INTO paises_esportes (codigo_pais, codigo_esporte, medalha) VALUES (1, 6, 3);
+INSERT INTO paises_esportes (codigo_pais, codigo_esporte, medalha) VALUES (2, 1, 1);
+INSERT INTO paises_esportes (codigo_pais, codigo_esporte, medalha) VALUES (2, 2, 2);
+INSERT INTO paises_esportes (codigo_pais, codigo_esporte, medalha) VALUES (2, 3, 3);
+INSERT INTO paises_esportes (codigo_pais, codigo_esporte, medalha) VALUES (3, 1, 1);
+INSERT INTO paises_esportes (codigo_pais, codigo_esporte, medalha) VALUES (3, 2, 2);
+INSERT INTO paises_esportes (codigo_pais, codigo_esporte, medalha) VALUES (3, 3, 3);

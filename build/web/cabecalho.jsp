@@ -17,6 +17,7 @@
             %>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span>&nbsp Login</a></li>
+                        <li><a href="cadastro_usuario.jsp"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp Cadastre-se</a></li>
                     </ul>
             <% } else { %>
                     <ul class="nav navbar-nav navbar-right">

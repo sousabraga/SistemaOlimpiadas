@@ -35,10 +35,12 @@ public class ProxyFilter implements Filter {
         ROTAS_LIVRES.put("index", "/SistemaOlimpiadas/index.jsp");
         ROTAS_LIVRES.put("ranking", "/SistemaOlimpiadas/ranking.jsp");
         ROTAS_LIVRES.put("login", "/SistemaOlimpiadas/login.jsp");
+        ROTAS_LIVRES.put("cadastroUsuario", "/SistemaOlimpiadas/cadastro_usuario.jsp");
         ROTAS_LIVRES.put("listaConquistas", "/SistemaOlimpiadas/lista_conquistas.jsp");
         ROTAS_LIVRES.put("logout", "/SistemaOlimpiadas/logout.jsp");
         ROTAS_LIVRES.put("frontController", "/SistemaOlimpiadas/sistema");
-        ROTAS_LIVRES.put("loginAjax", "/SistemaOlimpiadas/LoginAJAX");
+        ROTAS_LIVRES.put("loginAJAX", "/SistemaOlimpiadas/LoginAJAX");
+        ROTAS_LIVRES.put("cadastroUsuarioAJAX", "/SistemaOlimpiadas/CadastroUsuarioAJAX");
         ROTAS_LIVRES.put("logoutServlet", "/SistemaOlimpiadas/Logout");
         ROTAS_LIVRES.put("resources", "/SistemaOlimpiadas/resources/");
     }

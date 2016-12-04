@@ -45,8 +45,10 @@
                         </div>
                 <% } %>
 
-                <span class="label label-danger" id="mensagemErro"></span>
-                <br/><br/>
+                <div class="mensagens">
+                    <span class="label label-danger" id="mensagemErro"></span>
+                </div>
+                <br/>
                 
                 <form action="sistema" id="formulario" method="POST" onsubmit="return validaFormLogin();">
                     <input type="hidden" name="regraDeNegocio" value="Login"/>
